@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 16:43:48 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 21:25:09 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/17 14:44:09 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static void		ft_get_pos_idxs(char *nb, t_num_idx *num);
 static void		ft_set_number(char *nb, t_num_idx *num, t_point *point);
 static double	ft_parse_float(char *nb, t_num_idx *num);
+static void		ft_check_signal_and_i(char *nb, t_num_idx *num);
 
-void	ft_set_complex_point(char *nb, t_point *point)
+int	ft_set_complex_point(char *nb, t_point *point)
 {
 	int			i;
 	t_num_idx	num;
@@ -34,11 +35,9 @@ void	ft_set_complex_point(char *nb, t_point *point)
 		nb[num.end]++;
 	ft_get_pos_idxs(nb, &num);
 	ft_set_number(nb, &num, point);
-	if (num.parts == 2 && num.i_char == 0)
-	{
-		free(nb);
-		ft_frac_error_handler("", WRONG_PARAMETER_PASSED);
-	}
+	if (num.parts == 2)
+		ft_check_signal_and_i(nb, &num);
+	return (0);
 }
 
 static void	ft_get_pos_idxs(char *nb, t_num_idx *num)
@@ -111,4 +110,28 @@ static double	ft_parse_float(char *nb, t_num_idx *num)
 			rtn = 1.0;
 	}
 	return (rtn);
+}
+
+static void	ft_check_signal_and_i(char *nb, t_num_idx *num)
+{
+	int	i;
+	int	signal;
+
+	i = 0;
+	signal = 0;
+	while (nb[i] && !ft_isdigit(nb[i]))
+		i++;
+	while (nb[i] && (ft_isdigit(nb[i]) || nb[i] == '.'))
+		i++;
+	while (nb[i] && !ft_isdigit(nb[i]))
+	{
+		if (nb[i] == '+' || nb[i] == '-')
+			signal++;
+		i++;
+	}
+	if (num->i_char == 0 || signal != 1)
+	{
+		free(nb);
+		ft_frac_error_handler("", WRONG_PARAMETER_PASSED);
+	}
 }

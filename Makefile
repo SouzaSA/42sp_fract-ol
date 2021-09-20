@@ -31,6 +31,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_cleaner_memory.c	\
 				ft_color_palete.c	\
 				ft_fractal_burning_ship.c	\
+				ft_fractal_calc.c	\
 				ft_fractal_julia.c	\
 				ft_fractal_mandelbrot.c	\
 				ft_fractol.c	\
@@ -45,7 +46,10 @@ SRCS		=	ft_atocomplex.c \
 				ft_initializer_info.c	\
 				ft_main.c	\
 				ft_printer_help_msg.c	\
+				ft_put_hud_to_window.c	\
+				ft_put_informantion.c	\
 				ft_render_frame.c	\
+				ft_render_next_frame.c	\
 				ft_utils_window_viewport.c
 
 OBJS		=	${addprefix ${OBJ_DIR}/,${SRCS:.c=.o}}

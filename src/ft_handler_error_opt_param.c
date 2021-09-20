@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 16:30:46 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 21:24:46 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/17 14:22:21 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_check_signal_amount(char *nb);
 static int	ft_check_signal_before_num(char *nb, int idx);
 static int	ft_check_dots_on_num(char *nb, int idx);
 
-void	ft_check_invalid_complex_str(char *nb)
+int	ft_check_invalid_complex_str(char *nb)
 {
 	int	i;
 	int	error_flag;
@@ -37,6 +37,7 @@ void	ft_check_invalid_complex_str(char *nb)
 	i = ft_check_dots_on_num(nb, i);
 	i = ft_check_signal_before_num(nb, i);
 	i = ft_check_dots_on_num(nb, i);
+	return (0);
 }
 
 static int	ft_check_valid_chars(char *nb)
@@ -98,6 +99,9 @@ static int	ft_check_signal_before_num(char *nb, int idx)
 			signal_count++;
 		i++;
 	}
+	while (nb[i] && ft_isdigit(nb[i]) && nb[i] != '.')
+		i++;
+
 	if (signal_count > 1)
 	{
 		free(nb);

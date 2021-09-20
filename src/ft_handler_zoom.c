@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 21:37:35 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 21:12:07 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/17 21:24:06 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,20 @@ static int	ft_zoom_apply(t_fractal *frac, int width, int height, double zoom);
 
 int	ft_zoom(t_data *data, int width, int height, char direction)
 {
-	double	zoom_factor;
+	t_boundaries	*default_limit;
+	t_boundaries	*limit;
+	double			default_size;
+	double			zoom_step;
 
+	default_limit = &data->fractal.std;
+	limit = &data->fractal.limit;
+	default_size = default_limit->max.x - default_limit->min.x;
 	if (direction == ZOOM_OUT)
-		zoom_factor = 0.2 / 0.9; //mudar
+		zoom_step = data->zoom_factor / (1 - data->zoom_factor);
 	else
-		zoom_factor = -0.2;
-	ft_zoom_apply(&data->fractal, width, height, zoom_factor);
+		zoom_step = -1 * data->zoom_factor;
+	ft_zoom_apply(&data->fractal, width, height, zoom_step);
+	data->total_zoom = default_size / (limit->max.x - limit->min.x);
 	return (0);
 }
 

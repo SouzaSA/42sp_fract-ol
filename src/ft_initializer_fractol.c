@@ -6,55 +6,93 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 17:08:19 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 21:12:35 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/17 18:47:15 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
-int	ft_fractol_init(t_fractal *frac, char *name, int width, int height)
+static void	ft_set_limits_frac_function(t_fractal *frac, char *name);
+static void	ft_set_julia_viewport_limits(t_fractal *fractal);
+static void	ft_set_mandelbrot_viewport_limits(t_fractal *fractal);
+static void	ft_set_burning_viewport_limits(t_fractal *fractal);
+
+int	ft_init_frac(t_fractal *frac, char *name, t_canvas *canvas, t_point *cte)
 {
 	int		i;
+	int		width;
+	int		height;
 	char	*name_lower;
 
-	name_lower = ft_strtolower(ft_strdup(name));
 	i = 0;
+	width = canvas->width;
+	height = canvas->height;
+	name_lower = ft_strtolower(ft_strdup(name));
 	frac->vals = malloc(height * width * sizeof(int));
 	if (!frac->vals)
 		ft_frac_error_handler("Fail to malloc memory to fractal", errno);
 	frac->max_iter = 256;
-	if (ft_strcmp(name_lower, "julia") == 0)
-	{
-		frac->limit.min.x = -2.0;
-		frac->limit.max.x = 2.0;
-		frac->limit.min.y = -2.0;
-		frac->limit.max.y = 2.0;
-	}
-	else if (ft_strcmp(name_lower, "mandelbrot") == 0)
-	{
-		frac->limit.min.x = -2.5;
-		frac->limit.max.x = 1.0;
-		frac->limit.min.y = -1.1;
-		frac->limit.max.y = 1.1;
-	}
-	else
-	{
-		frac->limit.min.x = -3.0;
-		frac->limit.max.x = 2.0;
-		frac->limit.min.y = -2.0;
-		frac->limit.max.y = 1.0;
-	}
+	ft_set_limits_frac_function(frac, name_lower);
+	frac->cte.x = cte->x;
+	frac->cte.y = cte->y;
 	frac->pixel_size.x = (frac->limit.max.x - frac->limit.min.x) / width;
 	frac->pixel_size.y = (frac->limit.max.y - frac->limit.min.y) / height;
 	free(name_lower);
 	return (0);
 }
 
-int	ft_set_fractal_constant(t_vars *vars, t_point *point)
+static void	ft_set_limits_frac_function(t_fractal *frac, char *name)
 {
-	vars->data.fractal.cte.x = point->x;
-	vars->data.fractal.cte.y = point->y;
-	vars->minimap.fractal.cte.x = point->x;
-	vars->minimap.fractal.cte.y = point->y;
-	return (0);
+	if (ft_strcmp(name, "julia") == 0)
+	{
+		ft_set_julia_viewport_limits(frac);
+		frac->fractal_calc = &ft_julia_calc;
+	}
+	else if (ft_strcmp(name, "mandelbrot") == 0)
+	{
+		ft_set_mandelbrot_viewport_limits(frac);
+		frac->fractal_calc = &ft_mandelbrot_calc;
+	}
+	else
+	{
+		ft_set_burning_viewport_limits(frac);
+		frac->fractal_calc = &ft_burning_ship_calc;
+	}
+
+}
+
+static void	ft_set_julia_viewport_limits(t_fractal *fractal)
+{
+	fractal->limit.min.x = -2.0;
+	fractal->limit.max.x = 2.0;
+	fractal->limit.min.y = -2.0;
+	fractal->limit.max.y = 2.0;
+	fractal->std.min.x = -2.0;
+	fractal->std.max.x = 2.0;
+	fractal->std.min.y = -2.0;
+	fractal->std.max.y = 2.0;
+}
+
+static void	ft_set_mandelbrot_viewport_limits(t_fractal *fractal)
+{
+	fractal->limit.min.x = -2.5;
+	fractal->limit.max.x = 1.0;
+	fractal->limit.min.y = -1.5;
+	fractal->limit.max.y = 1.5;
+	fractal->std.min.x = -2.5;
+	fractal->std.max.x = 1.0;
+	fractal->std.min.y = -1.5;
+	fractal->std.max.y = 1.5;
+}
+
+static void	ft_set_burning_viewport_limits(t_fractal *fractal)
+{
+	fractal->limit.min.x = -3.0;
+	fractal->limit.max.x = 2.0;
+	fractal->limit.min.y = -2.0;
+	fractal->limit.max.y = 1.0;
+	fractal->std.min.x = -3.0;
+	fractal->std.max.x = 2.0;
+	fractal->std.min.y = -2.0;
+	fractal->std.max.y = 1.0;
 }

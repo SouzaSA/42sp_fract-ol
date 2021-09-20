@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 20:52:15 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:34:01 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "libft.h"
 
 /* window name */
-# define PROG_NAME "Fractol 42sp v.0.4"
+# define PROG_NAME "Fractol 42sp v.0.7"
 
 /* fractal names */
 # define MANDELBROT "Mandelbrot"
@@ -51,12 +51,6 @@ typedef struct s_num_idx
 	int	parts;
 }	t_num_idx;
 
-typedef struct s_function
-{
-	char	*name;
-	int		(*fractal_calc)();
-}	t_function;
-
 typedef struct s_canvas {
 	int start_w;
 	int	start_h;
@@ -79,17 +73,17 @@ typedef struct s_fractal {
 	int				max_iter;
 	int				max_val_reached;
 	int				min_val_reached;
-	t_function		function;
+	int				(*fractal_calc)(struct s_fractal *, double, double);
 	t_point			cte;
 	t_point			pixel_size;
 	t_point			focus;
 	t_boundaries	limit;
+	t_boundaries	std;
 }	t_fractal;
 
 typedef struct s_img {
 	void		*img;
 	char		*addr;
-	char		*title;
 	double		*palette;
 	int			bpp;
 	int			line_len;
@@ -126,41 +120,45 @@ typedef struct s_vars {
 	t_minimap		minimap;
 }	t_vars;
 
-int		ft_set_palette(int palette_num, unsigned int *pal);
+int	ft_set_palette(int palette_num, unsigned int *pal);
 
-int		ft_frac_error_handler(char *msg, int errnum);
+int	ft_frac_error_handler(char *msg, int errnum);
 
-int		ft_fractol_init(t_fractal *fractol, char *name, int width, int height);
-int		ft_set_fractal_constant(t_vars *vars, t_point *point);
+int	ft_init_frac(t_fractal *frac, char *name, t_canvas *canvas, t_point *cte);
 
-int		ft_fractol(char *fractal_name, int width, int height, t_point *constant);
+int	ft_fractol(char *fractal_name, int width, int height, t_point *constant);
 
-int		ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height);
+int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height);
 
-int		ft_key_hook(int keycode, t_vars *vars);
-int		ft_mouse_hook(int button, int x, int y, t_vars	*vars);
+int	ft_key_hook(int keycode, t_vars *vars);
+int	ft_mouse_hook(int button, int x, int y, t_vars	*vars);
 
-int		ft_hud_init(t_vars *vars, char *frac_name, int width, int height);
+int	ft_init_hud(t_vars *vars, char *name, t_canvas *win_canvas, t_point *cte);
 
-int		ft_mandelbrot_calc(t_fractal *fractal, int width, int height);
-int		ft_burning_ship_calc(t_fractal *fractal, int width, int height);
-int		ft_julia_calc(t_fractal *fractal, int width, int height);
+int	ft_fractal_calc(t_fractal *fractal, int width, int height);
+int	ft_mandelbrot_calc(t_fractal *fractal, double x, double y);
+int	ft_burning_ship_calc(t_fractal *fractal, double x, double y);
+int	ft_julia_calc(t_fractal *fractal, double x, double y);
 
-int		ft_render_info_img(t_vars *vars);
+int	ft_render_hud(t_vars *vars);
+int	ft_render_info_img(t_vars *vars);
 
-int		ft_clear_memory(t_vars *vars);
+int	ft_clear_memory(t_vars *vars);
 
-int 	ft_param_handler(int argc, char **argv, t_point *point, char **dst);
+int ft_param_handler(int argc, char **argv, t_point *point, char **dst);
 
-int		ft_zoom(t_data *data, int width, int height, char direction);
+int	ft_zoom(t_data *data, int width, int height, char direction);
 
-int		ft_win_to_viewport(t_fractal *fractal, int i, int j, t_point *point);
+int	ft_win_to_viewport(t_fractal *fractal, int i, int j, t_point *point);
 
-int		ft_help_msg(void);
+int	ft_help_msg(void);
 
-void	ft_get_cte(int argc, char **argv, t_point *point);
+int	ft_get_cte(int argc, char **argv, t_point *point);
 
-void	ft_set_complex_point(char *nb, t_point *point);
-void	ft_check_invalid_complex_str(char *nb);
+int	ft_set_complex_point(char *nb, t_point *point);
+int	ft_check_invalid_complex_str(char *nb);
+
+int	ft_put_hud_to_window(t_vars *vars);
+int	ft_put_informantion(t_vars *vars);
 
 #endif
