@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/18 15:34:01 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/21 11:06:16 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 /* window name */
 # define PROG_NAME "Fractol 42sp v.0.7"
 
+/* key codes */
+# define ARROW_LEFT 65361
+# define ARROW_UP 65362
+# define ARROW_RIGHT 65363
+# define ARROW_DOWN 65364
+
 /* fractal names */
 # define MANDELBROT "Mandelbrot"
 # define JULIA "Julia"
@@ -32,11 +38,6 @@
 # define ZOOM_IN 'i'
 # define ZOOM_OUT 'o'
 
-/* shift direction*/
-# define SHIFT_UP 'u'
-# define SHIFT_DOWN 'd'
-# define SHIFT_LEFT 'l'
-# define SHIFT_RIGHT 'r'
 
 /* custom errors macros */
 # define WRONG_WINDOW_SIZE 2000
@@ -135,6 +136,9 @@ int	ft_mouse_hook(int button, int x, int y, t_vars	*vars);
 
 int	ft_init_hud(t_vars *vars, char *name, t_canvas *win_canvas, t_point *cte);
 
+int	ft_shift(t_data *data, int direction);
+int	ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen);
+int	ft_frac_recalc_w(t_fractal *frac, int start_w, int end_w, t_canvas *screen);
 int	ft_fractal_calc(t_fractal *fractal, int width, int height);
 int	ft_mandelbrot_calc(t_fractal *fractal, double x, double y);
 int	ft_burning_ship_calc(t_fractal *fractal, double x, double y);

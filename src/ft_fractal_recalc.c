@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 18:08:05 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/20 11:31:04 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/21 10:45:30 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen)
 		{
 			idx = j * screen->width + i;
 			ft_win_to_viewport(frac, i, j, &p);
-			frac->vals[idx] = frac->fractal_calc(fractal, p.x, p.y);
+			frac->vals[idx] = frac->fractal_calc(frac, p.x, p.y);
 			j++;
 		}
 		i++;

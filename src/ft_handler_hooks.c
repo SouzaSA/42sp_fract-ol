@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/18 15:32:13 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/21 11:11:27 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int	ft_key_hook(int keycode, t_vars *vars)
 {
+	if (keycode == ARROW_LEFT || keycode == ARROW_UP || keycode == ARROW_RIGHT
+		|| keycode == ARROW_DOWN)
+	{
+		ft_shift(&vars->data, keycode);
+	}
 	if (keycode == 65307)
 	{
 		ft_clear_memory(vars);
@@ -22,6 +27,7 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	{
 		ft_render_hud(vars);
 	}
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img.img, 0, 0);
 	printf("Key Pressed: %d\n", keycode); //apagar
 	return (0);
 }

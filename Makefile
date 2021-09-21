@@ -34,12 +34,14 @@ SRCS		=	ft_atocomplex.c \
 				ft_fractal_calc.c	\
 				ft_fractal_julia.c	\
 				ft_fractal_mandelbrot.c	\
+				ft_fractal_recalc.c	\
 				ft_fractol.c	\
 				ft_handler_error_opt_param.c	\
 				ft_handler_error.c	\
 				ft_handler_hooks.c	\
 				ft_handler_opt_parameter.c	\
 				ft_handler_parameter.c	\
+				ft_handler_translation.c	\
 				ft_handler_zoom.c	\
 				ft_initializer_hud.c	\
 				ft_initializer_fractol.c	\
