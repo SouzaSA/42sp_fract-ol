@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:13:37 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/22 20:26:06 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/23 11:21:03 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_put_informantion(t_vars *vars)
 	ft_put_txt(vars, 220, "Movement Keys: UP, DOWN, LEFT, RIGHT", color);
 	ft_put_txt(vars, 240, "Zoom Key:      MOUSE WHEEL", color);
 	ft_put_txt(vars, 280, "Minimap:", color);
+	ft_put_val(vars, 280, vars->minimap.fractal.title, color_v);
 	ft_get_zoom_level(vars);
 	return (0);
 }

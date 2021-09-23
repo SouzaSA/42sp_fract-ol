@@ -1,1 +1,4 @@
-# fractol
+# Fract'ol
+In this project we use the miniLibX library, a small library which implements some basic functions that allow you to quickly open a window and to draw within it.
+The suject is to draw, and iteract with some fractals, Mandelbrot set, Julia set and another one, I chose Burning Ship set. You can zoom in/out fractals with the mouse wheel and change his position with arrow keys.
+To do something different I implemented a hud with the main fractal, an information display and a "minimap" where what is shown depends on the chosen fractal, if Mandelbrot is chosen the minimap shows the Julia set, and the Julia set changes accordingly with the mouse position on the main fractal, if Julia set is chosen in the minimap showed will be the Mandelbrot set with the Julia selected point, in case of Burning Ship set, minimap will show zoom area.

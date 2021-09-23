@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/22 21:37:57 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/23 11:06:21 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,21 @@ int	ft_mouse_hook(int button, int x, int y, t_vars *vars)
 int	ft_mouse_motion_hook(int x,int y, t_vars *vars)
 {
 
-	if (ft_strcmp(vars->data.fractal.title, MANDELBROT) == 0 && x < vars->data.img.canvas.width && y < vars->data.img.canvas.height)
+	if (ft_strcmp(vars->data.fractal.title, MANDELBROT) == 0
+		&& x < vars->data.img.canvas.width && y < vars->data.img.canvas.height)
 	{
 		ft_win_to_viewport(&vars->data.fractal, x, y, &vars->minimap.fractal.cte);
 		ft_fractal_calc(&vars->minimap.fractal, vars->minimap.img.canvas.width, vars->minimap.img.canvas.height);
 		ft_render_next_frame(&vars->minimap.fractal, &vars->minimap.img, vars->minimap.img.canvas.width, vars->minimap.img.canvas.height);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->minimap.img.img, vars->minimap.img.canvas.start_w, vars->minimap.img.canvas.start_h);
+	}
+	if (ft_strcmp(vars->data.fractal.title, JULIA) == 0
+		&& x > vars->minimap.img.canvas.start_w && y > vars->minimap.img.canvas.start_h)
+	{
+		ft_win_to_viewport(&vars->minimap.fractal, x - vars->minimap.img.canvas.start_w, y - vars->minimap.img.canvas.start_h, &vars->data.fractal.cte);
+		ft_fractal_calc(&vars->data.fractal, vars->data.img.canvas.width, vars->data.img.canvas.height);
+		ft_render_next_frame(&vars->data.fractal, &vars->data.img, vars->data.img.canvas.width, vars->data.img.canvas.height);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img.img, vars->data.img.canvas.start_w, vars->data.img.canvas.start_h);
 	}
 	return (0);
 }
