@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/21 11:11:27 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/22 21:37:57 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,21 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	{
 		ft_render_hud(vars);
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img.img, 0, 0);
+	ft_put_hud_to_window(vars);
 	printf("Key Pressed: %d\n", keycode); //apagar
 	return (0);
 }
 
-int	ft_mouse_hook(int button, int x, int y, t_vars	*vars)
+int	ft_mouse_hook(int button, int x, int y, t_vars *vars)
 {
 	vars->data.fractal.focus.x = x;
 	vars->data.fractal.focus.y = y;
+	if (button == 1)
+	{
+		ft_win_to_viewport(&vars->data.fractal, x, y, &vars->minimap.fractal.cte);
+		ft_fractal_calc(&vars->minimap.fractal, vars->minimap.img.canvas.width, vars->minimap.img.canvas.height);
+		ft_render_next_frame(&vars->minimap.fractal, &vars->minimap.img, vars->minimap.img.canvas.width, vars->minimap.img.canvas.height);
+	}
 	if (button == 4)
 	{
 		ft_zoom(&vars->data, vars->data.img.canvas.width, vars->data.img.canvas.height, ZOOM_IN);
@@ -49,6 +55,19 @@ int	ft_mouse_hook(int button, int x, int y, t_vars	*vars)
 		ft_render_next_frame(&vars->data.fractal, &vars->data.img, vars->data.img.canvas.width, vars->data.img.canvas.height);
 	}
 	printf("%d, %d, %d\n", x, y, button); //apagar
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img.img, 0, 0);
+	ft_put_hud_to_window(vars);
+	return (0);
+}
+
+int	ft_mouse_motion_hook(int x,int y, t_vars *vars)
+{
+
+	if (ft_strcmp(vars->data.fractal.title, MANDELBROT) == 0 && x < vars->data.img.canvas.width && y < vars->data.img.canvas.height)
+	{
+		ft_win_to_viewport(&vars->data.fractal, x, y, &vars->minimap.fractal.cte);
+		ft_fractal_calc(&vars->minimap.fractal, vars->minimap.img.canvas.width, vars->minimap.img.canvas.height);
+		ft_render_next_frame(&vars->minimap.fractal, &vars->minimap.img, vars->minimap.img.canvas.width, vars->minimap.img.canvas.height);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->minimap.img.img, vars->minimap.img.canvas.start_w, vars->minimap.img.canvas.start_h);
+	}
 	return (0);
 }

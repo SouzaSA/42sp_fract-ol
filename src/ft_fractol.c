@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 11:43:44 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/17 19:44:38 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/22 21:00:35 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_fractol(char *fractal_name, int width, int height, t_point *constant)
 	mlx_hook(vars.win, 2, 1L << 0, ft_key_hook, &vars);
 	mlx_mouse_hook(vars.win, &ft_mouse_hook, &vars);
 	mlx_hook(vars.win, 17, 1L << 0, &ft_clear_memory, &vars);
+	mlx_hook(vars.win, 6, 1L<<6, &ft_mouse_motion_hook, &vars);
 	mlx_expose_hook(vars.win, &ft_put_hud_to_window, &vars);
 	//mlx_loop_hook(vars.mlx, ft_render_hud, &vars);
 	mlx_loop(vars.mlx);

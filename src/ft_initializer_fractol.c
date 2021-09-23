@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 17:08:19 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/17 18:47:15 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/21 23:43:57 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	ft_set_limits_frac_function(t_fractal *frac, char *name)
 
 static void	ft_set_julia_viewport_limits(t_fractal *fractal)
 {
+	fractal->title = JULIA;
 	fractal->limit.min.x = -2.0;
 	fractal->limit.max.x = 2.0;
 	fractal->limit.min.y = -2.0;
@@ -75,6 +76,7 @@ static void	ft_set_julia_viewport_limits(t_fractal *fractal)
 
 static void	ft_set_mandelbrot_viewport_limits(t_fractal *fractal)
 {
+	fractal->title = MANDELBROT;
 	fractal->limit.min.x = -2.5;
 	fractal->limit.max.x = 1.0;
 	fractal->limit.min.y = -1.5;
@@ -87,6 +89,7 @@ static void	ft_set_mandelbrot_viewport_limits(t_fractal *fractal)
 
 static void	ft_set_burning_viewport_limits(t_fractal *fractal)
 {
+	fractal->title = BURNING_SHIP;
 	fractal->limit.min.x = -3.0;
 	fractal->limit.max.x = 2.0;
 	fractal->limit.min.y = -2.0;

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/21 11:06:16 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/22 21:05:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_fractal {
 	int				max_val_reached;
 	int				min_val_reached;
 	int				(*fractal_calc)(struct s_fractal *, double, double);
+	char			*title;
 	t_point			cte;
 	t_point			pixel_size;
 	t_point			focus;
@@ -133,6 +134,7 @@ int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height);
 
 int	ft_key_hook(int keycode, t_vars *vars);
 int	ft_mouse_hook(int button, int x, int y, t_vars	*vars);
+int	ft_mouse_motion_hook(int x,int y, t_vars *vars);
 
 int	ft_init_hud(t_vars *vars, char *name, t_canvas *win_canvas, t_point *cte);
 

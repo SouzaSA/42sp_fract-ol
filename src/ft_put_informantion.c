@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:13:37 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/18 15:54:15 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/22 20:26:06 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 
 static void	ft_put_txt_center(t_vars *vars, int pos_v, char *str, int color);
 static void	ft_put_txt(t_vars *vars, int pos_v, char *str, int color);
+static void	ft_put_val(t_vars *vars, int pos_v, char *str, int color);
+static char *ft_get_zoom_level(t_vars *vars);
 
 int	ft_put_informantion(t_vars *vars)
 {
-	int color;
+	int 	color;
+	int		color_v;
+	//char	*aux;
 
 	color = 0xAFAFAF;
+	color_v = 0xFFAAAA;
 	ft_put_txt_center(vars, 30, "Informations", color);
 	ft_put_txt(vars, 70, "Fractal: ", color);
+	ft_put_val(vars, 70, vars->data.fractal.title, color_v);
 	ft_put_txt(vars, 100, "Zoom level: ", color);
 	ft_put_txt(vars, 130, "Complex point selected:", color);
 	ft_put_txt(vars, 150, "Re:", color);
@@ -30,7 +36,16 @@ int	ft_put_informantion(t_vars *vars)
 	ft_put_txt(vars, 220, "Movement Keys: UP, DOWN, LEFT, RIGHT", color);
 	ft_put_txt(vars, 240, "Zoom Key:      MOUSE WHEEL", color);
 	ft_put_txt(vars, 280, "Minimap:", color);
+	ft_get_zoom_level(vars);
 	return (0);
+}
+static char *ft_get_zoom_level(t_vars *vars)
+{
+	double zoom;
+
+	zoom = log(*vars->info.total_zoom);
+	printf("%lf\n", zoom); //tirar
+	return (NULL);
 }
 
 static void	ft_put_txt_center(t_vars *vars, int pos_v, char *str, int color)
@@ -48,5 +63,14 @@ static void	ft_put_txt(t_vars *vars, int pos_v, char *str, int color)
 	int	start_pos;
 
 	start_pos = vars->info.img.canvas.start_w + 10;
+	mlx_string_put(vars->mlx, vars->win, start_pos, pos_v, color, str);
+}
+
+
+static void	ft_put_val(t_vars *vars, int pos_v, char *str, int color)
+{
+	int	start_pos;
+
+	start_pos = vars->info.img.canvas.start_w + 90;
 	mlx_string_put(vars->mlx, vars->win, start_pos, pos_v, color, str);
 }
