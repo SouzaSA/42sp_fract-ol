@@ -6,14 +6,14 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:28:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/17 18:12:24 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 13:35:07 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
 static int	ft_data_init(t_vars *vars, char *name, t_point *cte);
-static int	ft_info_init(t_vars *vars);
+static int	ft_info_init(t_vars *vars, t_point *cte);
 static int	ft_minimap_init(t_vars *vars, char *name, t_point *cte);
 
 int	ft_init_hud(t_vars *vars, char *name, t_canvas *win_canvas, t_point *cte)
@@ -36,6 +36,7 @@ static int	ft_data_init(t_vars *vars, char *name, t_point *cte)
 
 	img = &vars->data.img;
 	data = &vars->data;
+	vars->selection = 0;
 	data->zoom_factor = 0.25;
 	data->shift_factor = 0.05;
 	data->total_zoom = 1;
@@ -51,7 +52,7 @@ static int	ft_data_init(t_vars *vars, char *name, t_point *cte)
 	return (0);
 }
 
-static int	ft_info_init(t_vars *vars)
+static int	ft_info_init(t_vars *vars, t_point *cte)
 {
 	t_img		*img;
 	t_canvas	*win_canvas;
@@ -67,6 +68,8 @@ static int	ft_info_init(t_vars *vars)
 			&img->endian);
 	vars->info.zoom = 0;
 	vars->info.limits = &vars->data.fractal.limit;
+	vars->info.selected.x = cte->x;
+	vars->info.selected.y = cte->y;
 	ft_render_info_img(vars);
 	return (0);
 }

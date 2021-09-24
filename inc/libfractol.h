@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/23 09:38:55 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 13:32:44 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef struct s_data_info {
 	t_img			img;
 	int				zoom;
 	double			*total_zoom;
+	t_point			selected;
 	t_boundaries	*limits;
 }	t_data_info;
 
@@ -114,12 +115,13 @@ typedef struct s_data {
 }	t_data;
 
 typedef struct s_vars {
-	void			*mlx;
-	void			*win;
-	t_canvas		win_canvas;
-	t_data			data;
-	t_data_info		info;
-	t_minimap		minimap;
+	void		*mlx;
+	void		*win;
+	int			selection;
+	t_canvas	win_canvas;
+	t_data		data;
+	t_data_info	info;
+	t_minimap	minimap;
 }	t_vars;
 
 int	ft_set_palette(int palette_num, unsigned int *pal);
@@ -166,5 +168,6 @@ int	ft_check_invalid_complex_str(char *nb);
 
 int	ft_put_hud_to_window(t_vars *vars);
 int	ft_put_informantion(t_vars *vars);
+int	ft_redraw_frac(t_vars *vars, int i, int j);
 
 #endif
