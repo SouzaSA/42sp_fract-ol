@@ -68,13 +68,6 @@ ${NAME}:	${OBJS}
 
 all:		${NAME}
 
-
-mlx:
-			${MAKE_OTR} ${MLX_DIR}
-
-ft:
-			${MAKE_OTR} ${FT_DIR}
-
 san:		${OBJS}
 			${CC} ${SAN} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
@@ -89,4 +82,4 @@ fclean: 	clean
 
 re:			fclean all
 
-.PHONY:		all mlx ft clean fclean re
+.PHONY:		all san clean fclean re
