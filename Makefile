@@ -17,10 +17,6 @@ FT_DIR		=	./libft
 FT_LIB		=	ft
 FT_CAL		=	-L${FT_DIR} -l${FT_LIB}
 
-MAKE_OTR	=	make -C
-MAKE_CLEAN	=	make clean -C
-MAKE_FCLEAN	=	make fclean -C
-
 CC			=	clang
 CFLAGS		=	-Wall -Wextra -Werror -O3
 LIBS		=	${MLX_CAL} ${FT_CAL} ${SYS_CAL}
@@ -38,6 +34,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_fractol.c	\
 				ft_handler_error_opt_param.c	\
 				ft_handler_error.c	\
+				ft_handler_hooks_utils.c	\
 				ft_handler_hooks.c	\
 				ft_handler_opt_parameter.c	\
 				ft_handler_parameter.c	\
@@ -65,9 +62,12 @@ ${OBJ_DIR}/%.o:	${SRC_DIR}/%.c
 			${CC} ${CFLAGS} ${INCS} -c $< -o $@
 
 ${NAME}:	${OBJS}
+			@make -C ${FT_DIR} all
+			@make -C ${MLX_DIR} all
 			${CC} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
-all:		ft mlx ${NAME}
+all:		${NAME}
+
 
 mlx:
 			${MAKE_OTR} ${MLX_DIR}
@@ -80,12 +80,12 @@ san:		${OBJS}
 
 clean:
 			${RM} ${OBJ_DIR}
-			${MAKE_CLEAN} ${MLX_DIR}
-			${MAKE_CLEAN} ${FT_DIR}
+			@make -C ${MLX_DIR} $@
+			@make -C ${FT_DIR} $@
 
 fclean: 	clean
 			${RM} ${NAME}
-			${MAKE_FCLEAN} ${FT_DIR}
+			@make -C ${FT_DIR} $@
 
 re:			fclean all
 
