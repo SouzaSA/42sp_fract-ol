@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:21:18 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 13:23:46 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 14:01:45 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_help_msg(void)
 	ft_putendl_fd(" The imaginary part must have 'i' char terminator.", 1);
 	ft_putendl_fd("\nExamples:", 1);
 	ft_putendl_fd(" ./fractol julia - 0.4 + 0.6i", 1);
-	ft_putendl_fd(" ./fractol maldelbrot", 1);
+	ft_putendl_fd(" ./fractol mandelbrot", 1);
 	ft_putendl_fd(" ./fractol burning-ship", 1);
 	ft_putendl_fd("\t\t by sde-alva", 1);
 	return (0);
