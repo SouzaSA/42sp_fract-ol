@@ -45,6 +45,8 @@ SRCS		=	ft_atocomplex.c \
 				ft_initializer_info.c	\
 				ft_main.c	\
 				ft_mark_put.c	\
+				ft_mark_update_translation.c	\
+				ft_mark_update_zoom.c	\
 				ft_printer_help_msg.c	\
 				ft_put_hud_to_window.c	\
 				ft_put_informantion.c	\

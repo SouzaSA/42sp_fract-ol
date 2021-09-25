@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 18:42:51 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 21:26:53 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 14:12:59 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,17 @@ static int	ft_draw_mark(t_vars *vars);
 
 int	ft_put_mark(t_vars *vars)
 {
-	char		*dt_name;
-	char		*mm_name;
+	char	*dt_name;
+	char	*mm_name;
+	int		is_valid_area;
 
 	dt_name = vars->data.fractal.title;
 	mm_name = vars->minimap.fractal.title;
-	if (ft_strcmp(dt_name, MANDELBROT) == 0)
-	{
+	is_valid_area = vars->mark_pos.x < vars->data.img.canvas.width;
+	if (ft_strcmp(dt_name, MANDELBROT) == 0 && is_valid_area)
 		ft_draw_mark(vars);
-	}
 	if (ft_strcmp(dt_name, JULIA) == 0)
-	{
 		ft_draw_mark(vars);
-	}
 	return (0);
 }
 

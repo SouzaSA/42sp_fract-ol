@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:25:57 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/21 22:59:40 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 14:22:40 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ int	ft_shift(t_data *data, int direction)
 {
 	int			shift_w;
 	int			shift_h;
-	t_canvas	screen;
+	t_canvas	scr;
 
 	shift_w = (double)data->img.canvas.width * data->shift_factor;
 	shift_h = (double)data->img.canvas.height * data->shift_factor;
-	screen.width = data->img.canvas.width;
-	screen.height = data->img.canvas.height;
+	scr.width = data->img.canvas.width;
+	scr.height = data->img.canvas.height;
 	if (direction == ARROW_UP)
-		ft_shift_up(data, shift_h, &screen);
+		ft_shift_up(data, shift_h, &scr);
 	else if (direction == ARROW_DOWN)
-		ft_shift_down(data, shift_h, &screen);
+		ft_shift_down(data, shift_h, &scr);
 	else if (direction == ARROW_LEFT)
-		ft_shift_left(data, shift_w, &screen);
+		ft_shift_left(data, shift_w, &scr);
 	else
-		ft_shift_right(data, shift_w, &screen);
-	ft_render_next_frame(&data->fractal, &data->img, screen.width, screen.height);
+		ft_shift_right(data, shift_w, &scr);
+	ft_render_next_frame(&data->fractal, &data->img, scr.width, scr.height);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 21:28:32 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 14:36:16 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_key_hook(int keycode, t_vars *vars)
 		|| keycode == ARROW_DOWN)
 	{
 		ft_shift(&vars->data, keycode);
+		if(vars->selection)
+			ft_shift_mark(vars, keycode);
 	}
 	if (keycode == 65307)
 	{
@@ -31,6 +33,7 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	}
 	ft_put_hud_to_window(vars);
 	printf("Key Pressed: %d\n", keycode); //apagar
+	ft_put_mark(vars);
 	return (0);
 }
 
@@ -49,12 +52,14 @@ int	ft_mouse_hook(int button, int i, int j, t_vars *vars)
 	if (button == 4 && i < vars->data.img.canvas.width)
 	{
 		ft_zoom(&vars->data, vars->data.img.canvas.width, vars->data.img.canvas.height, ZOOM_IN);
+		fr_update_mark_on_zoom(vars, ZOOM_IN);
 		ft_fractal_calc(&vars->data.fractal, vars->data.img.canvas.width, vars->data.img.canvas.height);
 		ft_render_next_frame(&vars->data.fractal, &vars->data.img, vars->data.img.canvas.width, vars->data.img.canvas.height);
 	}
 	if (button == 5 && i < vars->data.img.canvas.width)
 	{
 		ft_zoom(&vars->data, vars->data.img.canvas.width, vars->data.img.canvas.height, ZOOM_OUT);
+		fr_update_mark_on_zoom(vars, ZOOM_OUT);
 		ft_fractal_calc(&vars->data.fractal, vars->data.img.canvas.width, vars->data.img.canvas.height);
 		ft_render_next_frame(&vars->data.fractal, &vars->data.img, vars->data.img.canvas.width, vars->data.img.canvas.height);
 	}

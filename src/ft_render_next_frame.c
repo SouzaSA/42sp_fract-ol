@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 11:40:43 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 21:32:49 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 09:30:45 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ static unsigned int	ft_get_collor(double val)
 	unsigned int	color;
 	t = 0;
 
-	t = val;// / 4.0;
+	t = val;
 	color = 0x101010;
 	if (t < 0.99)
 	{
-		r = 8 * (1 - t) * t * t * t * 255;
+		r = 9 * (1 - t) * t * t * t * 255;
 		g = 15 * (1 - t) * (1 - t) * t * t * 255;
-		b = 8 * (1 - t ) * (1 - t ) * (1 - t ) * t * 255;
+		b = 9 * (1 - t ) * (1 - t ) * (1 - t ) * t * 255;
 		color = r << 16 | g << 8 | b;
 	}
 	return (color);

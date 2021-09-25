@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 21:31:52 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 14:32:58 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # define BURNING_SHIP "Burning Ship"
 
 /* zoom direction */
-# define ZOOM_IN 'i'
-# define ZOOM_OUT 'o'
+# define ZOOM_IN 4
+# define ZOOM_OUT 5
 
 
 /* custom errors macros */
@@ -140,6 +140,7 @@ int	ft_mouse_motion_hook(int x,int y, t_vars *vars);
 int	ft_init_hud(t_vars *vars, char *name, t_point *cte);
 
 int	ft_shift(t_data *data, int direction);
+int	ft_shift_mark(t_vars *vars, int direction);
 int	ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen);
 int	ft_frac_recalc_w(t_fractal *frac, int start_w, int end_w, t_canvas *screen);
 int	ft_fractal_calc(t_fractal *fractal, int width, int height);
@@ -155,6 +156,7 @@ int	ft_clear_memory(t_vars *vars);
 int ft_param_handler(int argc, char **argv, t_point *point, char **dst);
 
 int	ft_zoom(t_data *data, int width, int height, char direction);
+int	fr_update_mark_on_zoom(t_vars *vars,int direction);
 
 int	ft_win_to_viewport(t_fractal *fractal, int i, int j, t_point *point);
 
