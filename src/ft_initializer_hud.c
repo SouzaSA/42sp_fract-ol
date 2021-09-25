@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:28:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 13:46:04 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 16:13:11 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ static int	ft_data_init(t_vars *vars, char *name, t_point *cte);
 static int	ft_info_init(t_vars *vars, t_point *cte);
 static int	ft_minimap_init(t_vars *vars, char *name, t_point *cte);
 
-int	ft_init_hud(t_vars *vars, char *name, t_canvas *win_canvas, t_point *cte)
+int	ft_init_hud(t_vars *vars, char *name, t_point *cte)
 {
-	if (win_canvas->width <= 200 || win_canvas->height <= 120)
-		ft_frac_error_handler("Wrong window size", WRONG_WINDOW_SIZE);
 	ft_data_init(vars, name, cte);
 	ft_info_init(vars, cte);
 	ft_minimap_init(vars, name, cte);

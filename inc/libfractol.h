@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 13:32:44 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 21:31:52 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ typedef struct s_boundaries {
 typedef struct s_fractal {
 	int				*vals;
 	int				max_iter;
-	int				max_val_reached;
-	int				min_val_reached;
 	int				(*fractal_calc)(struct s_fractal *, double, double);
 	char			*title;
 	t_point			cte;
@@ -118,6 +116,7 @@ typedef struct s_vars {
 	void		*mlx;
 	void		*win;
 	int			selection;
+	t_point		mark_pos;
 	t_canvas	win_canvas;
 	t_data		data;
 	t_data_info	info;
@@ -138,7 +137,7 @@ int	ft_key_hook(int keycode, t_vars *vars);
 int	ft_mouse_hook(int button, int x, int y, t_vars	*vars);
 int	ft_mouse_motion_hook(int x,int y, t_vars *vars);
 
-int	ft_init_hud(t_vars *vars, char *name, t_canvas *win_canvas, t_point *cte);
+int	ft_init_hud(t_vars *vars, char *name, t_point *cte);
 
 int	ft_shift(t_data *data, int direction);
 int	ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen);
@@ -169,5 +168,6 @@ int	ft_check_invalid_complex_str(char *nb);
 int	ft_put_hud_to_window(t_vars *vars);
 int	ft_put_informantion(t_vars *vars);
 int	ft_redraw_frac(t_vars *vars, int i, int j);
+int	ft_put_mark(t_vars *vars);
 
 #endif

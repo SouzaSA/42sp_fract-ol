@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 16:16:18 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/23 09:37:20 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 20:27:29 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int	ft_burning_ship_calc(t_fractal *fractal, double x, double y)
 		w = (cpx.x + cpx.y) * (cpx.x + cpx.y);
 		i++;
 	}
-	return (i - 1);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 11:40:43 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/21 20:00:18 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 21:32:49 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height)
 	int		i;
 	int		j;
 	char	*dst;
-	int		delta_iter;
 
 	i = 0;
-	delta_iter = frac->max_val_reached;// - frac->min_val_reached;
-	if (delta_iter <= 0)
-		delta_iter = 1;
 	while (i < height)
 	{
 		j = 0;
@@ -36,7 +32,7 @@ int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height)
 			else if (i == 1 || i == height - 2 || j == 1 || j == width - 2)//mudar onde gera essa jaca de borda
 				*(unsigned int *)dst = 0x00450000;
 			else
-				*(unsigned int *)dst = ft_get_collor(frac->vals[i * width + j]/((delta_iter)/4.0)); //;(frac->max_iter/4));
+				*(unsigned int *)dst = ft_get_collor((log(frac->vals[i * width + j])/log(frac->max_iter))); //((delta_iter)/4.0)); //;(frac->max_iter/4));
 			j++;
 		}
 		i++;
@@ -53,7 +49,7 @@ static unsigned int	ft_get_collor(double val)
 	unsigned int	color;
 	t = 0;
 
-	t = val / 4.0;
+	t = val;// / 4.0;
 	color = 0x101010;
 	if (t < 0.99)
 	{

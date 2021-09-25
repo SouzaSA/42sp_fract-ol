@@ -6,43 +6,77 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 20:34:08 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/23 21:03:10 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 21:28:02 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
+static int	ft_redraw_mandelbrot(t_vars *vars, int i, int j);
+static int	ft_redraw_julia(t_vars *vars, int i, int j);
+
 int	ft_redraw_frac(t_vars *vars, int i, int j)
 {
 	t_fractal	*dt_frac;
-	t_fractal	*mm_frac;
 	t_img		*dt_img;
 	t_img		*mm_img;
 
 	dt_frac = &vars->data.fractal;
-	mm_frac = &vars->minimap.fractal;
 	dt_img = &vars->data.img;
 	mm_img = &vars->minimap.img;
 	if (ft_strcmp(dt_frac->title, MANDELBROT) == 0 && i < dt_img->canvas.width
 		&& j < dt_img->canvas.height)
 	{
-		ft_win_to_viewport(dt_frac, i, j, &mm_frac->cte);
-		ft_fractal_calc(mm_frac, mm_img->canvas.width, mm_img->canvas.height);
-		ft_render_next_frame(mm_frac, mm_img, mm_img->canvas.width,
-			mm_img->canvas.height);
-		mlx_put_image_to_window(vars->mlx, vars->win, mm_img->img,
-			mm_img->canvas.start_w, mm_img->canvas.start_h);
+		ft_redraw_mandelbrot(vars, i, j);
 	}
 	if (ft_strcmp(dt_frac->title, JULIA) == 0  && i > mm_img->canvas.start_w
 		&& j > mm_img->canvas.start_h)
 	{
-		ft_win_to_viewport(mm_frac, i - mm_img->canvas.start_w,
-			j - mm_img->canvas.start_h, &dt_frac->cte);
-		ft_fractal_calc(dt_frac, dt_img->canvas.width, dt_img->canvas.height);
-		ft_render_next_frame(dt_frac, &vars->data.img, dt_img->canvas.width,
-			dt_img->canvas.height);
-		mlx_put_image_to_window(vars->mlx, vars->win, dt_img->img,
-			dt_img->canvas.start_w, dt_img->canvas.start_h);
+		ft_redraw_julia(vars, i, j);
 	}
+	return (0);
+}
+
+static int	ft_redraw_mandelbrot(t_vars *vars, int i, int j)
+{
+	t_fractal	*dt_frac;
+	t_fractal	*mm_frac;
+	t_img		*dt_img;
+	t_img		*mm_img;
+	t_canvas	*mm_can;
+
+	dt_frac = &vars->data.fractal;
+	mm_frac = &vars->minimap.fractal;
+	dt_img = &vars->data.img;
+	mm_img = &vars->minimap.img;
+	mm_can = &mm_img->canvas;
+	ft_win_to_viewport(dt_frac, i, j, &mm_frac->cte);
+	ft_fractal_calc(mm_frac, mm_can->width, mm_can->height);
+	ft_render_next_frame(mm_frac, mm_img, mm_can->width, mm_can->height);
+	mlx_put_image_to_window(vars->mlx, vars->win, mm_img->img, mm_can->start_w,
+		mm_can->start_h);
+	return (0);
+}
+
+static int	ft_redraw_julia(t_vars *vars, int i, int j)
+{
+	t_fractal	*dt_frac;
+	t_fractal	*mm_frac;
+	t_img		*dt_img;
+	t_img		*mm_img;
+	t_canvas	*dt_can;
+
+	dt_frac = &vars->data.fractal;
+	mm_frac = &vars->minimap.fractal;
+	dt_img = &vars->data.img;
+	mm_img = &vars->minimap.img;
+	dt_can = &dt_img->canvas;
+	ft_win_to_viewport(mm_frac, i - mm_img->canvas.start_w,
+		j - mm_img->canvas.start_h, &dt_frac->cte);
+	ft_fractal_calc(dt_frac, dt_can->width, dt_can->height);
+	ft_render_next_frame(dt_frac, &vars->data.img, dt_can->width,
+		dt_can->height);
+	mlx_put_image_to_window(vars->mlx, vars->win, dt_img->img, dt_can->start_w,
+		dt_can->start_h);
 	return (0);
 }

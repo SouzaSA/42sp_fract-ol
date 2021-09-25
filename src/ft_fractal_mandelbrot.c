@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 18:34:58 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/23 09:37:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 20:27:18 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int	ft_mandelbrot_calc(t_fractal *fractal, double x, double y)
 		w = (cpx.x + cpx.y) * (cpx.x + cpx.y);
 		i++;
 	}
-	return (i - 1);
+	return (i);
 }

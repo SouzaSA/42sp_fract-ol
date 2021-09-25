@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:21:18 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 14:01:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/24 15:08:07 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_help_msg(void)
 	ft_putendl_fd("Fract-ol usage:", 1);
 	ft_putendl_fd(" ./fractol <fractal set name> [constant complex number]", 1);
 	ft_putendl_fd("\nFractal set names: (not case sensitive)", 1);
-	ft_putendl_fd(" Maldelbrot;", 1);
+	ft_putendl_fd(" Mandelbrot;", 1);
 	ft_putendl_fd(" Julia;", 1);
 	ft_putendl_fd(" Burning-ship.", 1);
 	ft_putendl_fd("\nConstant complex number (Optional)", 1);
