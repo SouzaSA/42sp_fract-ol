@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 12:43:28 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 16:41:33 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 17:38:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_put_info_vals(t_vars *vars)
 	ft_put_val(vars, 100, aux, color_v);
 	free(aux);
 	ft_put_num(vars, color_v);
-	ft_put_val(vars, 300, vars->minimap.fractal.title, color_v);
+	ft_put_val(vars, 320, vars->minimap.fractal.title, color_v);
 	if (vars->mov_type)
 	{
 		mlx_string_put(vars->mlx, vars->win, start_pos, 220, color_v, "Viewport");

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:13:37 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 13:52:09 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 17:38:03 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ int	ft_put_informantion(t_vars *vars)
 	ft_put_txt(vars, 130, "Complex point selected:", color);
 	ft_put_txt(vars, 150, "Re:", color);
 	ft_put_txt(vars, 170, "Im:", color);
-	ft_put_txt(vars, 200, "Keys:", color);
+	ft_put_txt(vars, 200, "Change Movement Type:  M", color);
 	ft_put_txt(vars, 220, "Movement Type:", color);
 	ft_put_txt(vars, 240, "Movement Keys: UP, DOWN, LEFT, RIGHT", color);
 	ft_put_txt(vars, 260, "Zoom Key:      MOUSE WHEEL", color);
-	ft_put_txt(vars, 300, "Minimap:", color);
+	ft_put_txt(vars, 280, "Change Color:  C", color);
+	ft_put_txt(vars, 320, "Minimap:", color);
 	ft_put_info_vals(vars);
 	return (0);
 }
