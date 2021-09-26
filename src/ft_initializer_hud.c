@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:28:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/25 17:45:55 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 21:31:18 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	ft_data_init(t_vars *vars, char *name, t_point *cte)
 	img = &vars->data.img;
 	data = &vars->data;
 	vars->selection = 0;
-	data->zoom_factor = 0.25;
+	data->zoom_factor = 0.08;
 	data->shift_factor = 0.05;
 	data->total_zoom = 1;
 	//ft_set_palette(0, img->palette);
