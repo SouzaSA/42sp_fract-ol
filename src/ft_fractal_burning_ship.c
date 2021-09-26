@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 16:16:18 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 20:27:29 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 15:53:25 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_burning_ship_calc(t_fractal *fractal, double x, double y)
 	while (i < fractal->max_iter && pow2.x + pow2.y <= 4)
 	{
 		cpx.x = pow2.x - pow2.y + x;
-		cpx.y = fabs(w - pow2.x - pow2.y) + y;
+		cpx.y = fabs(w - pow2.x - pow2.y) - y;
 		pow2.x = cpx.x * cpx.x;
 		pow2.y = cpx.y * cpx.y;
 		w = (cpx.x + cpx.y) * (cpx.x + cpx.y);

@@ -39,7 +39,9 @@ SRCS		=	ft_atocomplex.c \
 				ft_handler_hooks.c	\
 				ft_handler_opt_parameter.c	\
 				ft_handler_parameter.c	\
-				ft_handler_translation.c	\
+				ft_handler_translation_utils.c	\
+				ft_handler_translation_vp.c	\
+				ft_handler_translation_win.c	\
 				ft_handler_zoom.c	\
 				ft_initializer_hud.c	\
 				ft_initializer_fractol.c	\
@@ -50,6 +52,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_mark_update_zoom.c	\
 				ft_printer_help_msg.c	\
 				ft_put_hud_to_window.c	\
+				ft_put_informantion_vals.c	\
 				ft_put_informantion.c	\
 				ft_render_frame.c	\
 				ft_render_next_frame.c	\

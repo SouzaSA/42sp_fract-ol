@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/25 20:30:59 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 17:16:03 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	if (keycode == ARROW_LEFT || keycode == ARROW_UP || keycode == ARROW_RIGHT
 		|| keycode == ARROW_DOWN)
 	{
-		ft_shift(&vars->data, keycode);
+		vars->mv_function(&vars->data, keycode);
 		if(vars->selection)
 			ft_shift_mark(vars, keycode);
 	}
@@ -30,6 +30,13 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	if (keycode == 97)
 	{
 		ft_render_hud(vars);
+	}
+	if (keycode == 109)
+	{
+		vars->mov_type = !vars->mov_type;
+		vars->mv_function = &ft_shift_vp;
+		if (!vars->mov_type)
+			vars->mv_function = &ft_shift_win;
 	}
 	if (keycode == 99)
 	{

@@ -6,13 +6,13 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 18:08:05 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/21 10:45:30 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 11:27:58 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
-int ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen)
+int	ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen)
 {
 	t_point	p;
 	int		i;
@@ -35,7 +35,7 @@ int ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen)
 	return (0);
 }
 
-int ft_frac_recalc_w(t_fractal *frac, int start_w, int end_w, t_canvas *screen)
+int	ft_frac_recalc_w(t_fractal *frac, int start_w, int end_w, t_canvas *screen)
 {
 	t_point	p;
 	int		i;

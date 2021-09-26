@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 20:34:08 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 21:28:02 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 11:31:33 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_redraw_frac(t_vars *vars, int i, int j)
 	{
 		ft_redraw_mandelbrot(vars, i, j);
 	}
-	if (ft_strcmp(dt_frac->title, JULIA) == 0  && i > mm_img->canvas.start_w
+	if (ft_strcmp(dt_frac->title, JULIA) == 0 && i > mm_img->canvas.start_w
 		&& j > mm_img->canvas.start_h)
 	{
 		ft_redraw_julia(vars, i, j);

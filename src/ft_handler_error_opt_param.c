@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 16:30:46 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/17 14:22:21 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 11:29:28 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ static int	ft_check_signal_before_num(char *nb, int idx)
 	}
 	while (nb[i] && ft_isdigit(nb[i]) && nb[i] != '.')
 		i++;
-
 	if (signal_count > 1)
 	{
 		free(nb);

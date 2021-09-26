@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 18:12:34 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/25 20:46:29 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 11:25:20 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_color_mix3(int a, int b, int c)
 
 int	ft_color_mix4(int a, int b, int c)
 {
-	return ((c/2) << 16 | a << 8 | b);
+	return ((c / 2) << 16 | a << 8 | b);
 }
 
 int	ft_color_mix5(int a, int b, int c)

@@ -6,24 +6,25 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:28:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/25 21:31:18 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 17:08:53 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
 static int	ft_data_init(t_vars *vars, char *name, t_point *cte);
-static int	ft_info_init(t_vars *vars, t_point *cte);
+static int	ft_info_init(t_vars *vars);
 static int	ft_minimap_init(t_vars *vars, char *name, t_point *cte);
 
 int	ft_init_hud(t_vars *vars, char *name, t_point *cte)
 {
 	ft_data_init(vars, name, cte);
-	ft_info_init(vars, cte);
+	ft_info_init(vars);
 	ft_minimap_init(vars, name, cte);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img.img, 0, 0);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->minimap.img.img,
 		vars->minimap.img.canvas.start_w, vars->minimap.img.canvas.start_h);
+	vars->selection = 0;
 	if (cte->x != 0 || cte->y != 0)
 	{
 		vars->selection = 1;
@@ -31,6 +32,8 @@ int	ft_init_hud(t_vars *vars, char *name, t_point *cte)
 		vars->mark_pos.x += vars->minimap.img.canvas.start_w;
 		vars->mark_pos.y += vars->minimap.img.canvas.start_h;
 	}
+	vars->mov_type = 1;
+	vars->mv_function = &ft_shift_vp;
 	return (0);
 }
 
@@ -45,7 +48,6 @@ static int	ft_data_init(t_vars *vars, char *name, t_point *cte)
 	data->zoom_factor = 0.08;
 	data->shift_factor = 0.05;
 	data->total_zoom = 1;
-	//ft_set_palette(0, img->palette);
 	img->canvas.start_w = 0;
 	img->canvas.start_h = 0;
 	img->canvas.width = vars->win_canvas.width * 0.7;
@@ -57,7 +59,7 @@ static int	ft_data_init(t_vars *vars, char *name, t_point *cte)
 	return (0);
 }
 
-static int	ft_info_init(t_vars *vars, t_point *cte)
+static int	ft_info_init(t_vars *vars)
 {
 	t_img		*img;
 	t_canvas	*win_canvas;
@@ -71,10 +73,12 @@ static int	ft_info_init(t_vars *vars, t_point *cte)
 	img->img = mlx_new_image(vars->mlx, img->canvas.width, img->canvas.height);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len,
 			&img->endian);
-	vars->info.zoom = 0;
 	vars->info.limits = &vars->data.fractal.limit;
-	vars->info.selected.x = cte->x;
-	vars->info.selected.y = cte->y;
+	vars->info.selected = &vars->data.fractal.cte;
+	if (!ft_strcmp(vars->data.fractal.title, MANDELBROT))
+		vars->info.selected = &vars->minimap.fractal.cte;
+	vars->info.has_selected = &vars->selection;
+	vars->info.mov_type = &vars->mov_type;
 	ft_render_info_img(vars);
 	return (0);
 }
@@ -102,7 +106,6 @@ static int	ft_minimap_init(t_vars *vars, char *name, t_point *cte)
 	img->img = mlx_new_image(vars->mlx, img->canvas.width, img->canvas.height);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len,
 			&img->endian);
-	//ft_set_palette(0, img->palette);
 	ft_init_frac(&vars->minimap.fractal, minimap_name, &img->canvas, cte);
 	free(name_lower);
 	return (0);
