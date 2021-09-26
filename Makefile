@@ -27,6 +27,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_cleaner_memory.c	\
 				ft_color_functions.c	\
 				ft_color_selector.c	\
+				ft_draw_square.c	\
 				ft_fractal_burning_ship.c	\
 				ft_fractal_calc.c	\
 				ft_fractal_julia.c	\

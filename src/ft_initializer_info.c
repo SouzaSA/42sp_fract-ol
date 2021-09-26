@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:34:48 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/21 23:42:03 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 18:02:11 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_render_info_img(t_vars *vars)
 	i = img->canvas.start_w;
 	j = img->canvas.start_h;
 	vars->info.total_zoom = &vars->data.total_zoom;
-	vars->info.limits = &vars->data.fractal.limit;
 	ft_fill_info_img(img, img->canvas.width, img->canvas.height);
 	mlx_put_image_to_window(vars->mlx, vars->win, img->img, i, j);
 	return (0);

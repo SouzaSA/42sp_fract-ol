@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:28:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 17:08:53 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 18:00:46 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static int	ft_info_init(t_vars *vars)
 	img->img = mlx_new_image(vars->mlx, img->canvas.width, img->canvas.height);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len,
 			&img->endian);
-	vars->info.limits = &vars->data.fractal.limit;
 	vars->info.selected = &vars->data.fractal.cte;
 	if (!ft_strcmp(vars->data.fractal.title, MANDELBROT))
 		vars->info.selected = &vars->minimap.fractal.cte;

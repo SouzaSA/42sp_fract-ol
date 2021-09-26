@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 17:16:03 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 19:13:06 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	}
 	ft_put_hud_to_window(vars);
 	printf("Key Pressed: %d\n", keycode); //apagar
-	ft_put_mark(vars);
+	//ft_put_mark(vars);
 	return (0);
 }
 
@@ -78,7 +78,7 @@ int	ft_mouse_hook(int button, int i, int j, t_vars *vars)
 	}
 	printf("%d, %d, %d\n", i, j, button); //apagar
 	ft_put_hud_to_window(vars);
-	ft_put_mark(vars);
+	//ft_put_mark(vars);
 	return (0);
 }
 

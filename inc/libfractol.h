@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 17:09:33 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 19:05:02 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ typedef struct s_data_info {
 	int				*mov_type;
 	double			*total_zoom;
 	t_point			*selected;
-	t_boundaries	*limits;
 }	t_data_info;
 
 typedef struct s_minimap {
@@ -191,4 +190,6 @@ int	ft_color_mix2(int a, int b, int c);
 int	ft_color_mix3(int a, int b, int c);
 int	ft_color_mix4(int a, int b, int c);
 int	ft_color_mix5(int a, int b, int c);
+
+int	ft_draw_square(t_vars *vars);
 #endif
