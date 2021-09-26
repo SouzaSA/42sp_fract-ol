@@ -6,13 +6,13 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 11:40:43 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/25 09:30:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 20:51:29 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
-static unsigned int	ft_get_collor(double val);
+static unsigned int	ft_get_color(t_fractal *frac, double val);
 
 int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height)
 {
@@ -32,7 +32,8 @@ int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height)
 			else if (i == 1 || i == height - 2 || j == 1 || j == width - 2)//mudar onde gera essa jaca de borda
 				*(unsigned int *)dst = 0x00450000;
 			else
-				*(unsigned int *)dst = ft_get_collor((log(frac->vals[i * width + j])/log(frac->max_iter))); //((delta_iter)/4.0)); //;(frac->max_iter/4));
+				*(unsigned int *)dst = ft_get_color(frac,
+					(log(frac->vals[i * width + j])/log(frac->max_iter)));
 			j++;
 		}
 		i++;
@@ -40,14 +41,13 @@ int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height)
 	return (0);
 }
 
-static unsigned int	ft_get_collor(double val)
+static unsigned int	ft_get_color(t_fractal *frac, double val)
 {
 	double			t;
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
 	unsigned int	color;
-	t = 0;
 
 	t = val;
 	color = 0x101010;
@@ -55,8 +55,8 @@ static unsigned int	ft_get_collor(double val)
 	{
 		r = 9 * (1 - t) * t * t * t * 255;
 		g = 15 * (1 - t) * (1 - t) * t * t * 255;
-		b = 9 * (1 - t ) * (1 - t ) * (1 - t ) * t * 255;
-		color = r << 16 | g << 8 | b;
+		b = 8.5 * (1 - t ) * (1 - t ) * (1 - t ) * t * 255;
+		color = frac->fractal_color(r, g, b);// r << 16 | g << 8 | b;
 	}
 	return (color);
 }

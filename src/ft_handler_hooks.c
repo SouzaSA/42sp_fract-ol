@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/25 14:36:16 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 20:30:59 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	if (keycode == 97)
 	{
 		ft_render_hud(vars);
+	}
+	if (keycode == 99)
+	{
+		fr_color_selector(&vars->data.fractal, ++vars->data.fractal.func_num % 5);
+		ft_render_next_frame(&vars->data.fractal, &vars->data.img, vars->data.img.canvas.width, vars->data.img.canvas.height);
+
 	}
 	ft_put_hud_to_window(vars);
 	printf("Key Pressed: %d\n", keycode); //apagar

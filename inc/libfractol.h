@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/25 14:32:58 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 18:56:38 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_fractal {
 	int				*vals;
 	int				max_iter;
 	int				(*fractal_calc)(struct s_fractal *, double, double);
+	int				(*fractal_color)(int, int, int);
+	int				func_num;
 	char			*title;
 	t_point			cte;
 	t_point			pixel_size;
@@ -159,6 +161,7 @@ int	ft_zoom(t_data *data, int width, int height, char direction);
 int	fr_update_mark_on_zoom(t_vars *vars,int direction);
 
 int	ft_win_to_viewport(t_fractal *fractal, int i, int j, t_point *point);
+int	ft_viewport_to_win(t_fractal *fractal, double x, double y, t_point *point);
 
 int	ft_help_msg(void);
 
@@ -172,4 +175,10 @@ int	ft_put_informantion(t_vars *vars);
 int	ft_redraw_frac(t_vars *vars, int i, int j);
 int	ft_put_mark(t_vars *vars);
 
+int	fr_color_selector(t_fractal *frac, int func_idx);
+int	ft_color_mix1(int a, int b, int c);
+int	ft_color_mix2(int a, int b, int c);
+int	ft_color_mix3(int a, int b, int c);
+int	ft_color_mix4(int a, int b, int c);
+int	ft_color_mix5(int a, int b, int c);
 #endif

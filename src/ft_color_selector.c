@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_color_palete.c                                  :+:      :+:    :+:   */
+/*   ft_color_selector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/30 18:52:04 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 11:57:04 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/09/25 18:18:00 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/09/25 18:57:49 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
-static void ft_palette_init(unsigned int *pal);
-
-int	ft_set_palette(int palette_num, unsigned int *pal)
+int	fr_color_selector(t_fractal *frac, int func_idx)
 {
-	if (palette_num == 0)
-		ft_palette_init(pal);
+	int	(*function[5])(int, int, int);
 
+	function[0] = &ft_color_mix1;
+	function[1] = &ft_color_mix2;
+	function[2] = &ft_color_mix3;
+	function[3] = &ft_color_mix4;
+	function[4] = &ft_color_mix5;
+	frac->fractal_color = function[func_idx];
 	return (0);
-}
-
-static void ft_palette_init(unsigned int *pal)
-{
-	pal[0] = 0x7F1637;
-	pal[1] = 0x047878;
-	pal[2] = 0xFFB733;
-	pal[3] = 0xF57336;
-	pal[4] = 0xC22121;
 }

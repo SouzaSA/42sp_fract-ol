@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:13:37 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/23 11:21:03 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 15:13:50 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_put_informantion(t_vars *vars)
 	ft_get_zoom_level(vars);
 	return (0);
 }
+
 static char *ft_get_zoom_level(t_vars *vars)
 {
 	double zoom;

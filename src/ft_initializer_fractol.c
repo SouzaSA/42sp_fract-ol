@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 17:08:19 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/23 21:13:12 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 18:50:30 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_init_frac(t_fractal *frac, char *name, t_canvas *canvas, t_point *cte)
 	frac->cte.y = cte->y;
 	frac->pixel_size.x = (frac->limit.max.x - frac->limit.min.x) / width;
 	frac->pixel_size.y = (frac->limit.max.y - frac->limit.min.y) / height;
+	fr_color_selector(frac, 0);
 	free(name_lower);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 21:21:38 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/18 15:35:51 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 20:29:07 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	ft_put_hud_to_window(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, nf_img->img,
 		nf_img->canvas.start_w, nf_img->canvas.start_h);
 	ft_put_informantion(vars);
+	ft_put_mark(vars);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:28:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 16:13:11 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/25 17:45:55 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ int	ft_init_hud(t_vars *vars, char *name, t_point *cte)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img.img, 0, 0);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->minimap.img.img,
 		vars->minimap.img.canvas.start_w, vars->minimap.img.canvas.start_h);
+	if (cte->x != 0 || cte->y != 0)
+	{
+		vars->selection = 1;
+		ft_viewport_to_win(&vars->minimap.fractal, cte->x, cte->y, &vars->mark_pos);
+		vars->mark_pos.x += vars->minimap.img.canvas.start_w;
+		vars->mark_pos.y += vars->minimap.img.canvas.start_h;
+	}
 	return (0);
 }
 

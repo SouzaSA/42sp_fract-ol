@@ -25,7 +25,8 @@ SAN			=	-g3 -fsanitize=address
 
 SRCS		=	ft_atocomplex.c \
 				ft_cleaner_memory.c	\
-				ft_color_palete.c	\
+				ft_color_functions.c	\
+				ft_color_selector.c	\
 				ft_fractal_burning_ship.c	\
 				ft_fractal_calc.c	\
 				ft_fractal_julia.c	\
@@ -52,6 +53,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_put_informantion.c	\
 				ft_render_frame.c	\
 				ft_render_next_frame.c	\
+				ft_utils_viewport_window.c	\
 				ft_utils_window_viewport.c
 
 OBJS		=	${addprefix ${OBJ_DIR}/,${SRCS:.c=.o}}
