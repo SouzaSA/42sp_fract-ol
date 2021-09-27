@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 19:05:02 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/26 21:26:45 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "libft.h"
 
 /* window name */
-# define PROG_NAME "Fractol 42sp v.0.7"
+# define PROG_NAME "Fractol 42sp v.0.9"
 
 /* key codes */
 # define ARROW_LEFT 65361
@@ -181,6 +181,9 @@ int	ft_check_invalid_complex_str(char *nb);
 int	ft_put_hud_to_window(t_vars *vars);
 int	ft_put_informantion(t_vars *vars);
 int	ft_put_info_vals(t_vars *vars);
+int	ft_put_txt(t_vars *vars, int pos_v, int pos_h, char *str);
+int	ft_put_val(t_vars *vars, int pos_v, int pos_h, char *str);
+
 int	ft_redraw_frac(t_vars *vars, int i, int j);
 int	ft_put_mark(t_vars *vars);
 
