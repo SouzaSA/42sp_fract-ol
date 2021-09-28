@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 21:26:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:10:23 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,4 +195,5 @@ int	ft_color_mix4(int a, int b, int c);
 int	ft_color_mix5(int a, int b, int c);
 
 int	ft_draw_square(t_vars *vars);
+int ft_reset(t_vars *vars);
 #endif

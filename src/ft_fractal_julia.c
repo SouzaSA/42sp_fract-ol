@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 11:34:55 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/18 15:22:48 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:11:27 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_julia_calc(t_fractal *fractal, double x, double y)
 	i = 0;
 	x2 = 0;
 	y2 = 0;
-	while (i < fractal->max_iter && x2 + y2 < 4)
+	while (i < fractal->max_iter && x2 + y2 < (1L << 16))
 	{
 		x2 = x * x;
 		y2 = y * y;

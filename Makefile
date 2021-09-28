@@ -58,6 +58,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_put_informantion.c	\
 				ft_render_frame.c	\
 				ft_render_next_frame.c	\
+				ft_reset.c	\
 				ft_utils_viewport_window.c	\
 				ft_utils_window_viewport.c
 

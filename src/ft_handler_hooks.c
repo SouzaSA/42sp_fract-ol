@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 19:29:17 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 19:13:06 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:14:07 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_key_hook(int keycode, t_vars *vars)
 	{
 		ft_clear_memory(vars);
 	}
-	if (keycode == 97)
+	if (keycode == 114)
 	{
-		ft_render_hud(vars);
+		ft_reset(vars);
 	}
 	if (keycode == 109)
 	{

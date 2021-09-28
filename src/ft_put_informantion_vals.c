@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 12:43:28 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 21:33:13 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 12:15:52 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_put_info_vals(t_vars *vars)
 {
 	char	*aux;
 
-	ft_put_val(vars, 70, 70, vars->data.fractal.title);
+	ft_put_val(vars, 60, 70, vars->data.fractal.title);
 	aux = ft_get_zoom_level(vars);
-	ft_put_val(vars, 100, 90, aux);
+	ft_put_val(vars, 90, 90, aux);
 	free(aux);
 	ft_put_num(vars, 190, 60);
 	ft_put_val(vars, 340, 70, vars->minimap.fractal.title);

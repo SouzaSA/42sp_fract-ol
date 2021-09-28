@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:13:37 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 21:09:37 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 12:17:37 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ static void	ft_put_txt_center(t_vars *vars, int pos_v, char *str);
 int	ft_put_informantion(t_vars *vars)
 {
 	ft_put_txt_center(vars, 30, "Informations");
-	ft_put_txt(vars, 70, 10,  "Fractal: ");
-	ft_put_txt(vars, 100, 10, "Zoom level: ");
+	ft_put_txt(vars, 60, 10,  "Fractal: ");
+	ft_put_txt(vars, 90, 10, "Zoom level: ");
+	ft_put_txt(vars, 110, 10, "Reset Key: ");
+	ft_put_val(vars, 110, 80, "R");
 	ft_put_txt(vars, 130, 10, "Select Point:");
-	ft_put_val(vars, 130, 110, "Left Mouse Button");
+	ft_put_val(vars, 130, 100, "Left Mouse Button");
 	ft_put_txt(vars, 150, 10, "Unselect Point: ");
 	ft_put_val(vars, 150, 110, "Right Mouse Button");
 	ft_put_txt(vars, 170, 10, "Complex point selected:");
@@ -30,7 +32,7 @@ int	ft_put_informantion(t_vars *vars)
 	ft_put_val(vars, 230, 150, "M");
 	ft_put_txt(vars, 250, 10, "Movement Type:");
 	ft_put_txt(vars, 270, 10, "Movement Keys:");
-	ft_put_val(vars, 270, 110, "UP, DOWN, LEFT, RIGHT");
+	ft_put_val(vars, 270, 100, "UP, DOWN, LEFT, RIGHT");
 	ft_put_txt(vars, 290, 10, "Zoom Key:");
 	ft_put_val(vars, 290, 70, "MOUSE WHEEL");
 	ft_put_txt(vars, 310, 10, "Change Color:");
