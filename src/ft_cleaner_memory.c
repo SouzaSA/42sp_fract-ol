@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 18:47:01 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/17 16:19:42 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 14:53:15 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ static int	ft_clean_data(void *mlx, t_data *data);
 static int	ft_clean_data_info(void *mlx, t_data_info *data);
 static int	ft_clean_minimap(void *mlx, t_minimap *data);
 
+/* ************************************************************************** */
+/* Responsible to clean allocated memory destroing mlx and window, and freeing*/
+/* allocated memory in arrays of factal data. (main and minimap)              */
+/* ************************************************************************** */
 int	ft_clear_memory(t_vars *vars)
 {
 	ft_clean_data(vars->mlx, &vars->data);

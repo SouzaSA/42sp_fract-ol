@@ -6,12 +6,16 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/25 18:12:34 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 11:25:20 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 15:00:19 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
+/* ************************************************************************** */
+/* Group of functions responsible to mix color, exchanging components got by  */
+/* Bernstein polynomial                                                       */
+/* ************************************************************************** */
 int	ft_color_mix1(int a, int b, int c)
 {
 	return (a << 16 | b << 8 | c);

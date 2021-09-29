@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 18:20:10 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 21:19:26 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:19:10 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ static int		ft_fractal_name_handler(int argc, char **argv, char **dst);
 static size_t	ft_strncmp_ncs(char *s1, char *s2, int n);
 static int		ft_buningship_checker(int argc, char **argv);
 
+/* ************************************************************************** */
+/* Responsible to test the name of fractal set, first its change the entering */
+/* to lowercase and after checks if the name matches with the implemented     */
+/* fractal names, if an error is found, send error msg and quit.              */
+/* ************************************************************************** */
 int	ft_param_handler(int argc, char **argv, t_point *point, char **dst)
 {
 	point->x = 0;

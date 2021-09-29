@@ -6,12 +6,15 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 16:16:18 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 15:53:25 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 16:38:50 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
+/* ************************************************************************** */
+/* Function who make Burning Ship set.                                        */
+/* ************************************************************************** */
 int	ft_burning_ship_calc(t_fractal *fractal, double x, double y)
 {
 	int		i;

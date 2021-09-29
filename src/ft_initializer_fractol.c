@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 17:08:19 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 17:51:05 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:55:45 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ static void	ft_set_julia_viewport_limits(t_fractal *fractal);
 static void	ft_set_mandelbrot_viewport_limits(t_fractal *fractal);
 static void	ft_set_burning_viewport_limits(t_fractal *fractal);
 
+/* ************************************************************************** */
+/* Responsible for initialize fractal structures variables.                   */
+/* ************************************************************************** */
 int	ft_init_frac(t_fractal *frac, char *name, t_canvas *canvas, t_point *cte)
 {
 	int		i;
@@ -59,7 +62,6 @@ static void	ft_set_limits_frac_function(t_fractal *frac, char *name)
 		ft_set_burning_viewport_limits(frac);
 		frac->fractal_calc = &ft_burning_ship_calc;
 	}
-
 }
 
 static void	ft_set_julia_viewport_limits(t_fractal *fractal)

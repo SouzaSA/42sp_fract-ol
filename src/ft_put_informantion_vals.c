@@ -6,15 +6,18 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 12:43:28 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 12:15:52 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 21:59:10 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
-static char *ft_get_zoom_level(t_vars *vars);
-static char *ft_lftoa_p(double num, int p);
-static int ft_put_num(t_vars *vars, int pos_v, int pos_h);
+/* ************************************************************************** */
+/* Responsible for put variables on info area on the right position.          */
+/* ************************************************************************** */
+static char	*ft_get_zoom_level(t_vars *vars);
+static char	*ft_lftoa_p(double num, int p);
+static int	ft_put_num(t_vars *vars, int pos_v, int pos_h);
 
 int	ft_put_info_vals(t_vars *vars)
 {
@@ -39,7 +42,7 @@ int	ft_put_info_vals(t_vars *vars)
 	return (0);
 }
 
-static char *ft_get_zoom_level(t_vars *vars)
+static char	*ft_get_zoom_level(t_vars *vars)
 {
 	double	zoom;
 	char	*tmp;
@@ -60,7 +63,7 @@ static char *ft_get_zoom_level(t_vars *vars)
 	return (num_str);
 }
 
-static char *ft_lftoa_p(double num, int p)
+static char	*ft_lftoa_p(double num, int p)
 {
 	int		dec;
 	int		frac;
@@ -88,7 +91,7 @@ static char *ft_lftoa_p(double num, int p)
 	return (num_str);
 }
 
-static int ft_put_num(t_vars *vars, int pos_v, int pos_h)
+static int	ft_put_num(t_vars *vars, int pos_v, int pos_h)
 {
 	char	*re_str;
 	char	*im_str;

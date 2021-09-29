@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 16:30:46 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 11:29:28 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 17:56:32 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ static int	ft_check_signal_amount(char *nb);
 static int	ft_check_signal_before_num(char *nb, int idx);
 static int	ft_check_dots_on_num(char *nb, int idx);
 
+/* ************************************************************************** */
+/* Responsible to check if number string is valid, where it's checks valid    */
+/* chars, has a correct num of signals, dots and 'i' characters               */
+/* ************************************************************************** */
 int	ft_check_invalid_complex_str(char *nb)
 {
 	int	i;

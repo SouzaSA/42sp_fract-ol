@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 17:22:45 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/17 14:43:27 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:08:30 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 static char		*ft_praram_concat(int argc, char **argv, int arg_idx);
 
+/* ************************************************************************** */
+/* Responsible to concat and trim all patameters thats represents the complex */
+/* number to be used on Julia set fractal. */
+/* ************************************************************************** */
 int	ft_get_cte(int argc, char **argv, t_point *point)
 {
 	char	*params;

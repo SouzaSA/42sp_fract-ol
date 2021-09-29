@@ -6,16 +6,19 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 20:31:28 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 20:33:29 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 21:19:39 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
+/* ************************************************************************** */
+/* Auxiliary functions for print information on screen.                       */
+/* ************************************************************************** */
 int	ft_put_txt(t_vars *vars, int pos_v, int pos_h, char *str)
 {
 	int	start_pos;
-	int color;
+	int	color;
 
 	color = 0xAFAFAF;
 	start_pos = vars->info.img.canvas.start_w + pos_h;
@@ -26,7 +29,7 @@ int	ft_put_txt(t_vars *vars, int pos_v, int pos_h, char *str)
 int	ft_put_val(t_vars *vars, int pos_v, int pos_h, char *str)
 {
 	int	start_pos;
-	int		color_v;
+	int	color_v;
 
 	color_v = 0xFFAAAA;
 	start_pos = vars->info.img.canvas.start_w + pos_h;

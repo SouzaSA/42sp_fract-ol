@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fractal_julia.c                                 :+:      :+:    :+:   */
+/*   ft_color_set.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/08 11:34:55 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 16:38:23 by sde-alva         ###   ########.fr       */
+/*   Created: 2021/09/28 19:36:05 by sde-alva          #+#    #+#             */
+/*   Updated: 2021/09/28 19:59:14 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
 /* ************************************************************************** */
-/* Function who make Julia set.                                               */
+/* Responsible to call function that change the color mixer function and      */
+/* after changing the function repaint the img pixels.                        */
 /* ************************************************************************** */
-int	ft_julia_calc(t_fractal *fractal, double x, double y)
+int	ft_color_set(t_vars *vars)
 {
-	int		i;
-	double	x2;
-	double	y2;
-	double	w;
+	t_fractal	*frac;
+	t_img		*img;
 
-	i = 0;
-	x2 = 0;
-	y2 = 0;
-	while (i < fractal->max_iter && x2 + y2 < (1L << 16))
-	{
-		x2 = x * x;
-		y2 = y * y;
-		w = (x + y) * (x + y) - x2 - y2;
-		x = x2 - y2 + fractal->cte.x;
-		y = w + fractal->cte.y;
-		i++;
-	}
-	return (i);
+	frac = &vars->data.fractal;
+	img = &vars->data.img;
+	fr_color_selector(frac, ++frac->func_num % 5);
+	ft_render_next_frame(frac, img, img->canvas.width, img->canvas.height);
+	return (0);
 }

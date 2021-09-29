@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 21:13:37 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 12:17:37 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 21:59:41 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 static void	ft_put_txt_center(t_vars *vars, int pos_v, char *str);
 
+/* ************************************************************************** */
+/* Responsible for put static strings on info area.                           */
+/* ************************************************************************** */
 int	ft_put_informantion(t_vars *vars)
 {
 	ft_put_txt_center(vars, 30, "Informations");
-	ft_put_txt(vars, 60, 10,  "Fractal: ");
+	ft_put_txt(vars, 60, 10, "Fractal: ");
 	ft_put_txt(vars, 90, 10, "Zoom level: ");
 	ft_put_txt(vars, 110, 10, "Reset Key: ");
 	ft_put_val(vars, 110, 80, "R");
@@ -44,9 +47,9 @@ int	ft_put_informantion(t_vars *vars)
 
 static void	ft_put_txt_center(t_vars *vars, int pos_v, char *str)
 {
-	int mid_info;
+	int	mid_info;
 	int	start_pos;
-	int color;
+	int	color;
 
 	color = 0xAFAFAF;
 	mid_info = vars->info.img.canvas.start_w + vars->info.img.canvas.width / 2;

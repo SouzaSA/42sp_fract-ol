@@ -6,12 +6,16 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 11:43:44 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 11:28:39 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 17:36:31 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
+/* ************************************************************************** */
+/* Responsible to up the system, starting the mlx, win, call functions to     */
+/* start all struct variables, set the hooks and call the loop.               */
+/* ************************************************************************** */
 int	ft_fractol(char *fractal_name, int width, int height, t_point *constant)
 {
 	t_vars	vars;

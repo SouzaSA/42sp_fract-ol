@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 21:37:35 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/24 14:09:11 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:53:42 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 static int	ft_zoom_apply(t_fractal *frac, int width, int height, double zoom);
 
+/* ************************************************************************** */
+/* Responsible for select the zoom type (IN or OUT) and apply this, also      */
+/* update the zomm level variable.                                            */
+/* ************************************************************************** */
 int	ft_zoom(t_data *data, int width, int height, char direction)
 {
 	t_boundaries	*default_limit;
@@ -31,6 +35,10 @@ int	ft_zoom(t_data *data, int width, int height, char direction)
 		zoom_step = -1 * data->zoom_factor;
 	ft_zoom_apply(&data->fractal, width, height, zoom_step);
 	data->total_zoom = default_size / (limit->max.x - limit->min.x);
+	ft_fractal_calc(&data->fractal, data->img.canvas.width, \
+		data->img.canvas.height);
+	ft_render_next_frame(&data->fractal, &data->img, data->img.canvas.width, \
+		data->img.canvas.height);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 17:53:36 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 21:58:33 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 15:43:03 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 static int	draw_line_w(t_minimap *mini, int x1, int x2, int y);
 static int	draw_line_h(t_minimap *mini, int y1, int y2, int x);
 
+/* ************************************************************************** */
+/* Function that draws a square in zoom area of minimap.                      */
+/* ************************************************************************** */
 int	ft_draw_square(t_vars *vars)
 {
 	t_point	pt_min;
@@ -53,7 +56,7 @@ static int	draw_line_w(t_minimap *mini, int x1, int x2, int y)
 		start = x2;
 		end = x1;
 	}
-	while (start < end && y >=0 && y < mini->img.canvas.height)
+	while (start < end && y >= 0 && y < mini->img.canvas.height)
 	{
 		if (start >= 0 && start < mini->img.canvas.width)
 		{

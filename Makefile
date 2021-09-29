@@ -27,6 +27,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_cleaner_memory.c	\
 				ft_color_functions.c	\
 				ft_color_selector.c	\
+				ft_color_set.c	\
 				ft_draw_square.c	\
 				ft_fractal_burning_ship.c	\
 				ft_fractal_calc.c	\
@@ -40,6 +41,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_handler_hooks.c	\
 				ft_handler_opt_parameter.c	\
 				ft_handler_parameter.c	\
+				ft_handler_translation_set.c	\
 				ft_handler_translation_utils.c	\
 				ft_handler_translation_vp.c	\
 				ft_handler_translation_win.c	\
@@ -49,8 +51,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_initializer_info.c	\
 				ft_main.c	\
 				ft_mark_put.c	\
-				ft_mark_update_translation.c	\
-				ft_mark_update_zoom.c	\
+				ft_mark_set.c	\
 				ft_printer_help_msg.c	\
 				ft_put_hud_to_window.c	\
 				ft_put_informantion_utils.c	\

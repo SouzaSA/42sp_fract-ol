@@ -6,15 +6,20 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 20:34:08 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 11:31:33 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 19:09:33 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
-static int	ft_redraw_mandelbrot(t_vars *vars, int i, int j);
-static int	ft_redraw_julia(t_vars *vars, int i, int j);
+static int	ft_redraw_minimap(t_vars *vars, int i, int j);
+static int	ft_redraw_main_img(t_vars *vars, int i, int j);
 
+/* ************************************************************************** */
+/* Responsible to make the drawing of Julia set when mouse walk by Mandelbrot */
+/* fractal, regardless of the Julia set is on the main screen or minimap. This*/
+/* function will choose what image has to be changed.                         */
+/* ************************************************************************** */
 int	ft_redraw_frac(t_vars *vars, int i, int j)
 {
 	t_fractal	*dt_frac;
@@ -27,17 +32,17 @@ int	ft_redraw_frac(t_vars *vars, int i, int j)
 	if (ft_strcmp(dt_frac->title, MANDELBROT) == 0 && i < dt_img->canvas.width
 		&& j < dt_img->canvas.height)
 	{
-		ft_redraw_mandelbrot(vars, i, j);
+		ft_redraw_minimap(vars, i, j);
 	}
 	if (ft_strcmp(dt_frac->title, JULIA) == 0 && i > mm_img->canvas.start_w
 		&& j > mm_img->canvas.start_h)
 	{
-		ft_redraw_julia(vars, i, j);
+		ft_redraw_main_img(vars, i, j);
 	}
 	return (0);
 }
 
-static int	ft_redraw_mandelbrot(t_vars *vars, int i, int j)
+static int	ft_redraw_minimap(t_vars *vars, int i, int j)
 {
 	t_fractal	*dt_frac;
 	t_fractal	*mm_frac;
@@ -58,7 +63,7 @@ static int	ft_redraw_mandelbrot(t_vars *vars, int i, int j)
 	return (0);
 }
 
-static int	ft_redraw_julia(t_vars *vars, int i, int j)
+static int	ft_redraw_main_img(t_vars *vars, int i, int j)
 {
 	t_fractal	*dt_frac;
 	t_fractal	*mm_frac;

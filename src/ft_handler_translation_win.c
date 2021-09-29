@@ -6,12 +6,15 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:25:57 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 17:12:45 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:49:42 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
+/* ************************************************************************** */
+/* Responsible for window movement.                                           */
+/* ************************************************************************** */
 int	ft_shift_win(t_data *data, int direction)
 {
 	int			shift_w;
@@ -22,11 +25,11 @@ int	ft_shift_win(t_data *data, int direction)
 	shift_h = (double)data->img.canvas.height * data->shift_factor;
 	scr.width = data->img.canvas.width;
 	scr.height = data->img.canvas.height;
-	if (direction == ARROW_DOWN)
+	if (direction == KEY_DOWN)
 		ft_shift_up(data, shift_h, &scr);
-	else if (direction == ARROW_UP)
+	else if (direction == KEY_UP)
 		ft_shift_down(data, shift_h, &scr);
-	else if (direction == ARROW_RIGHT)
+	else if (direction == KEY_RIGHT)
 		ft_shift_left(data, shift_w, &scr);
 	else
 		ft_shift_right(data, shift_w, &scr);

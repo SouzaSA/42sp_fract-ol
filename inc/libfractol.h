@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 10:10:23 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 22:45:06 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@
 # define PROG_NAME "Fractol 42sp v.0.9"
 
 /* key codes */
-# define ARROW_LEFT 65361
-# define ARROW_UP 65362
-# define ARROW_RIGHT 65363
-# define ARROW_DOWN 65364
+# define KEY_ESC 65307
+# define KEY_R 114
+# define KEY_M 109
+# define KEY_C 99
+# define KEY_LEFT 65361
+# define KEY_UP 65362
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
 
 /* fractal names */
 # define MANDELBROT "Mandelbrot"
@@ -37,7 +41,6 @@
 /* zoom direction */
 # define ZOOM_IN 4
 # define ZOOM_OUT 5
-
 
 /* custom errors macros */
 # define WRONG_WINDOW_SIZE 2000
@@ -53,7 +56,7 @@ typedef struct s_num_idx
 }	t_num_idx;
 
 typedef struct s_canvas {
-	int start_w;
+	int	start_w;
 	int	start_h;
 	int	width;
 	int	height;
@@ -139,10 +142,11 @@ int	ft_render_next_frame(t_fractal *frac, t_img *img, int width, int height);
 
 int	ft_key_hook(int keycode, t_vars *vars);
 int	ft_mouse_hook(int button, int x, int y, t_vars	*vars);
-int	ft_mouse_motion_hook(int x,int y, t_vars *vars);
+int	ft_mouse_motion_hook(int x, int y, t_vars *vars);
 
 int	ft_init_hud(t_vars *vars, char *name, t_point *cte);
 
+int	ft_translation_set(t_vars *vars);
 int	ft_shift_vp(t_data *data, int direction);
 int	ft_shift_win(t_data *data, int direction);
 int	ft_shift_up(t_data *data, int shift_h, t_canvas *screen);
@@ -150,7 +154,6 @@ int	ft_shift_down(t_data *data, int shift_h, t_canvas *screen);
 int	ft_shift_left(t_data *data, int shift_h, t_canvas *screen);
 int	ft_shift_right(t_data *data, int shift_h, t_canvas *screen);
 
-int	ft_shift_mark(t_vars *vars, int direction);
 int	ft_frac_recalc_h(t_fractal *frac, int start_h, int end_h, t_canvas *screen);
 int	ft_frac_recalc_w(t_fractal *frac, int start_w, int end_w, t_canvas *screen);
 int	ft_fractal_calc(t_fractal *fractal, int width, int height);
@@ -163,10 +166,9 @@ int	ft_render_info_img(t_vars *vars);
 
 int	ft_clear_memory(t_vars *vars);
 
-int ft_param_handler(int argc, char **argv, t_point *point, char **dst);
+int	ft_param_handler(int argc, char **argv, t_point *point, char **dst);
 
 int	ft_zoom(t_data *data, int width, int height, char direction);
-int	fr_update_mark_on_zoom(t_vars *vars,int direction);
 
 int	ft_win_to_viewport(t_fractal *fractal, int i, int j, t_point *point);
 int	ft_viewport_to_win(t_fractal *fractal, double x, double y, t_point *point);
@@ -185,8 +187,11 @@ int	ft_put_txt(t_vars *vars, int pos_v, int pos_h, char *str);
 int	ft_put_val(t_vars *vars, int pos_v, int pos_h, char *str);
 
 int	ft_redraw_frac(t_vars *vars, int i, int j);
+
+int	ft_set_mark(t_vars *vars, int i, int j);
 int	ft_put_mark(t_vars *vars);
 
+int	ft_color_set(t_vars *vars);
 int	fr_color_selector(t_fractal *frac, int func_idx);
 int	ft_color_mix1(int a, int b, int c);
 int	ft_color_mix2(int a, int b, int c);
@@ -195,5 +200,5 @@ int	ft_color_mix4(int a, int b, int c);
 int	ft_color_mix5(int a, int b, int c);
 
 int	ft_draw_square(t_vars *vars);
-int ft_reset(t_vars *vars);
+int	ft_reset(t_vars *vars);
 #endif

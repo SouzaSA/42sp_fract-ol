@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:34:48 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 18:02:11 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 21:03:11 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static int	ft_fill_info_img(t_img *img, int width, int height);
 
+/* ************************************************************************** */
+/* Responsible for render info background color.                              */
+/* ************************************************************************** */
 int	ft_render_info_img(t_vars *vars)
 {
 	int		i;
@@ -42,7 +45,7 @@ static int	ft_fill_info_img(t_img *img, int width, int height)
 		while (j < width)
 		{
 			dst = img->addr + (i * img->line_len + j * (img->bpp / 8));
-			if (i == 0 || i == height - 1 || j == 0 || j == width - 1) //mudar onde gera essa jaca de borda
+			if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
 				*(unsigned int *)dst = 0x004f0000;
 			else if (i == 1 || i == height - 2 || j == 1 || j == width - 2)
 				*(unsigned int *)dst = 0x00450000;

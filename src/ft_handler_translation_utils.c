@@ -6,17 +6,20 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 19:25:57 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/26 16:56:10 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 20:45:06 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfractol.h"
 
-int ft_shift_up(t_data *data, int shift_h, t_canvas *screen)
+/* ************************************************************************** */
+/* Set of functions responsible for movement of the visible area.             */
+/* ************************************************************************** */
+int	ft_shift_up(t_data *data, int shift_h, t_canvas *screen)
 {
-	int i;
-	int j;
-	int *vals;
+	int	i;
+	int	j;
+	int	*vals;
 
 	i = 0;
 	vals = data->fractal.vals;
@@ -34,15 +37,16 @@ int ft_shift_up(t_data *data, int shift_h, t_canvas *screen)
 	}
 	data->fractal.limit.min.y += shift_h * data->fractal.pixel_size.y;
 	data->fractal.limit.max.y += shift_h * data->fractal.pixel_size.y;
-	ft_frac_recalc_h(&data->fractal, screen->height - shift_h, screen->height, screen);
+	ft_frac_recalc_h(&data->fractal, screen->height - shift_h, screen->height, \
+		screen);
 	return (0);
 }
 
-int ft_shift_down(t_data *data, int shift_h, t_canvas *screen)
+int	ft_shift_down(t_data *data, int shift_h, t_canvas *screen)
 {
-	int i;
-	int j;
-	int *vals;
+	int	i;
+	int	j;
+	int	*vals;
 
 	i = screen->height - 1;
 	vals = data->fractal.vals;
@@ -64,11 +68,11 @@ int ft_shift_down(t_data *data, int shift_h, t_canvas *screen)
 	return (0);
 }
 
-int ft_shift_left(t_data *data, int shift_w, t_canvas *screen)
+int	ft_shift_left(t_data *data, int shift_w, t_canvas *screen)
 {
-	int i;
-	int j;
-	int *vals;
+	int	i;
+	int	j;
+	int	*vals;
 
 	i = 0;
 	vals = data->fractal.vals;
@@ -86,15 +90,16 @@ int ft_shift_left(t_data *data, int shift_w, t_canvas *screen)
 	}
 	data->fractal.limit.min.x += shift_w * data->fractal.pixel_size.x;
 	data->fractal.limit.max.x += shift_w * data->fractal.pixel_size.x;
-	ft_frac_recalc_w(&data->fractal, screen->width - shift_w, screen->width, screen);
+	ft_frac_recalc_w(&data->fractal, screen->width - shift_w, screen->width, \
+		screen);
 	return (0);
 }
 
-int ft_shift_right(t_data *data, int shift_w, t_canvas *screen)
+int	ft_shift_right(t_data *data, int shift_w, t_canvas *screen)
 {
-	int i;
-	int j;
-	int *vals;
+	int	i;
+	int	j;
+	int	*vals;
 
 	i = 0;
 	vals = data->fractal.vals;
@@ -112,6 +117,6 @@ int ft_shift_right(t_data *data, int shift_w, t_canvas *screen)
 	}
 	data->fractal.limit.min.x -= shift_w * data->fractal.pixel_size.x;
 	data->fractal.limit.max.x -= shift_w * data->fractal.pixel_size.x;
-	ft_frac_recalc_w(&data->fractal, 0,  shift_w + 1, screen);
+	ft_frac_recalc_w(&data->fractal, 0, shift_w + 1, screen);
 	return (0);
 }

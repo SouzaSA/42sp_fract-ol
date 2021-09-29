@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 16:43:48 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/17 14:44:09 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 14:47:15 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ static void		ft_set_number(char *nb, t_num_idx *num, t_point *point);
 static double	ft_parse_float(char *nb, t_num_idx *num);
 static void		ft_check_signal_and_i(char *nb, t_num_idx *num);
 
+/* ************************************************************************** */
+/* Responsible to set convert the string with a complex number and put the    */
+/* real part into point->x and imaginary part on point->y.                    */
+/* ************************************************************************** */
 int	ft_set_complex_point(char *nb, t_point *point)
 {
 	int			i;
@@ -40,6 +44,10 @@ int	ft_set_complex_point(char *nb, t_point *point)
 	return (0);
 }
 
+/* ************************************************************************** */
+/* Responsible to get index position of start and end of number, as well the  */
+/* "." index and the "i" index in the string.                                 */
+/* ************************************************************************** */
 static void	ft_get_pos_idxs(char *nb, t_num_idx *num)
 {
 	int	i;
@@ -64,6 +72,9 @@ static void	ft_get_pos_idxs(char *nb, t_num_idx *num)
 		num->i_char = i;
 }
 
+/* ************************************************************************** */
+/* Responsible for properly set the number to the right place                 */
+/* ************************************************************************** */
 static void	ft_set_number(char *nb, t_num_idx *num, t_point *point)
 {
 	int		i;
@@ -87,6 +98,10 @@ static void	ft_set_number(char *nb, t_num_idx *num, t_point *point)
 	}
 }
 
+/* ************************************************************************** */
+/* Responsible for parse the string to a float, this function is caled for    */
+/* each part of the complex number.                                           */
+/* ************************************************************************** */
 static double	ft_parse_float(char *nb, t_num_idx *num)
 {
 	int		dec;
@@ -112,6 +127,12 @@ static double	ft_parse_float(char *nb, t_num_idx *num)
 	return (rtn);
 }
 
+/* ************************************************************************** */
+/* Responsible to check if the complex number has a signal between two parts. */
+/* This function also check if the complex number has an "i" letter and if    */
+/* there is not a digit after the "i", if some of this fail, a error msg is   */
+/* sent to terminal                                                           */
+/* ************************************************************************** */
 static void	ft_check_signal_and_i(char *nb, t_num_idx *num)
 {
 	int	i;
@@ -129,7 +150,7 @@ static void	ft_check_signal_and_i(char *nb, t_num_idx *num)
 			signal++;
 		i++;
 	}
-	if (num->i_char == 0 || signal != 1)
+	if (num->i_char == 0 || signal != 1 || ft_isdigit(nb[num->i_char + 1]))
 	{
 		free(nb);
 		ft_frac_error_handler("", WRONG_PARAMETER_PASSED);
