@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 12:02:25 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/15 12:05:02 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/28 22:47:34 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	isspace(int c)
 	int	is_space;
 
 	is_space = 0;
-	if ((c >=9 && c<= 13) || c == 32)
+	if ((c >= 9 && c <= 13) || c == 32)
 		is_space = 1;
 	return (is_space);
 }

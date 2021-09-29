@@ -81,6 +81,8 @@ ${NAME}:	${OBJS}
 all:		${NAME}
 
 san:		${OBJS}
+			@make -C ${FT_DIR} all
+			@make -C ${MLX_DIR} all
 			${CC} ${SAN} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
 clean:
