@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 11:40:43 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 22:11:40 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/09/29 21:25:12 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,14 @@ static unsigned int	ft_get_color(t_fractal *frac, double val)
 	color = 0x101010;
 	if (t < 0.99)
 	{
-		r = 9 * (1 - t) * t * t * t * 255;
-		g = 15 * (1 - t) * (1 - t) * t * t * 255;
-		b = 8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255;
+		r = 127 * sin (6.0 * t - 1.4) + 127;
+		g = 255 * t;
+		b = 255;
+		if (t < 0.5)
+			b = 500 * t;
+		// r = 9 * (1 - t) * t * t * t * 255;
+		// g = 15 * (1 - t) * (1 - t) * t * t * 255;
+		// b = 8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255;
 		color = frac->fractal_color(r, g, b);
 	}
 	return (color);

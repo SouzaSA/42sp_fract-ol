@@ -80,6 +80,8 @@ ${NAME}:	${OBJS}
 
 all:		${NAME}
 
+bonus:		${NAME}
+
 san:		${OBJS}
 			@make -C ${FT_DIR} all
 			@make -C ${MLX_DIR} all
@@ -96,4 +98,4 @@ fclean: 	clean
 
 re:			fclean all
 
-.PHONY:		all san clean fclean re
+.PHONY:		all bonus san clean fclean re
