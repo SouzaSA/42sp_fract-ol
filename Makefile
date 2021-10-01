@@ -74,8 +74,8 @@ ${OBJ_DIR}/%.o:	${SRC_DIR}/%.c
 			${CC} ${CFLAGS} ${INCS} -c $< -o $@
 
 ${NAME}:	${OBJS}
-			@make -C ${FT_DIR} all
-			@make -C ${MLX_DIR} all
+			make -C ${FT_DIR} all
+			make -C ${MLX_DIR} all
 			${CC} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
 all:		${NAME}
@@ -83,18 +83,18 @@ all:		${NAME}
 bonus:		${NAME}
 
 san:		${OBJS}
-			@make -C ${FT_DIR} all
-			@make -C ${MLX_DIR} all
+			make -C ${FT_DIR} all
+			make -C ${MLX_DIR} all
 			${CC} ${SAN} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
 clean:
 			${RM} ${OBJ_DIR}
-			@make -C ${MLX_DIR} $@
-			@make -C ${FT_DIR} $@
+			make -C ${MLX_DIR} $@
+			make -C ${FT_DIR} $@
 
 fclean: 	clean
 			${RM} ${NAME}
-			@make -C ${FT_DIR} $@
+			make -C ${FT_DIR} $@
 
 re:			fclean all
 
