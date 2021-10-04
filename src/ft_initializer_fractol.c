@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 17:08:19 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/01 13:18:10 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:01:09 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_init_frac(t_fractal *frac, char *name, t_canvas *canvas, t_point *cte)
 	frac->vals = malloc(height * width * sizeof(int));
 	if (!frac->vals)
 		ft_frac_error_handler("Fail to malloc memory to fractal", errno);
-	frac->max_iter = 256;
+	frac->max_iter = 600;
 	ft_set_limits_frac_function(frac, name_lower);
 	frac->cte.x = cte->x;
 	frac->cte.y = cte->y;

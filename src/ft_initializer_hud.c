@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 19:28:15 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 20:59:22 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:01:16 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static int	ft_data_init(t_vars *vars, char *name, t_point *cte)
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len, \
 			&img->endian);
 	ft_init_frac(&data->fractal, name, &img->canvas, cte);
+	ft_init_color(&data->fractal, &data->img);
 	return (0);
 }
 
@@ -111,6 +112,7 @@ static int	ft_minimap_init(t_vars *vars, char *name, t_point *cte)
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len, \
 			&img->endian);
 	ft_init_frac(&vars->minimap.fractal, minimap_name, &img->canvas, cte);
+	ft_init_color(&vars->minimap.fractal, &vars->minimap.img);
 	free(name_lower);
 	return (0);
 }

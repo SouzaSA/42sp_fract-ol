@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 18:47:01 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/09/28 14:53:15 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:01:45 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	ft_clean_data(void *mlx, t_data *data)
 {
 	free(data->fractal.vals);
 	data->fractal.vals = NULL;
+	free(data->img.palette);
+	data->img.palette = NULL;
 	mlx_destroy_image(mlx, data->img.img);
 	return (0);
 }
@@ -49,6 +51,8 @@ static int	ft_clean_minimap(void *mlx, t_minimap *data)
 {
 	free(data->fractal.vals);
 	data->fractal.vals = NULL;
+	free(data->img.palette);
+	data->img.palette = NULL;
 	mlx_destroy_image(mlx, data->img.img);
 	return (0);
 }

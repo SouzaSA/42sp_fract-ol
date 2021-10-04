@@ -46,6 +46,7 @@ SRCS		=	ft_atocomplex.c \
 				ft_handler_translation_vp.c	\
 				ft_handler_translation_win.c	\
 				ft_handler_zoom.c	\
+				ft_initializer_colorset.c	\
 				ft_initializer_hud.c	\
 				ft_initializer_fractol.c	\
 				ft_initializer_info.c	\

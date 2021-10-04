@@ -6,7 +6,7 @@
 /*   By: sde-alva <sde-alva@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/30 09:06:00 by sde-alva          #+#    #+#             */
-/*   Updated: 2021/10/01 14:45:03 by sde-alva         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:01:52 by sde-alva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ typedef struct s_fractal {
 }	t_fractal;
 
 typedef struct s_img {
-	void		*img;
-	char		*addr;
-	double		*palette;
-	int			bpp;
-	int			line_len;
-	int			endian;
-	t_canvas	canvas;
+	void			*img;
+	char			*addr;
+	unsigned int	*palette;
+	int				bpp;
+	int				line_len;
+	int				endian;
+	t_canvas		canvas;
 }	t_img;
 
 typedef struct s_data_info {
@@ -132,6 +132,7 @@ typedef struct s_vars {
 
 int	ft_clear_memory(t_vars *vars);
 int	ft_color_set(t_vars *vars);
+int	ft_init_color(t_fractal *frac, t_img *img);
 int	fr_color_selector(t_fractal *frac, int func_idx);
 int	ft_color_mix1(int a, int b, int c);
 int	ft_color_mix2(int a, int b, int c);
