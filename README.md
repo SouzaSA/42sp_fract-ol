@@ -5,6 +5,10 @@ The suject is to draw, and iteract with some fractals, Mandelbrot set, Julia set
 
 To do something different I implemented a hud with the main fractal, an information display and a "minimap" where what is shown depends on the chosen fractal, if Mandelbrot is chosen the minimap shows the Julia set, and the Julia set changes accordingly with the mouse position on the main fractal, if Julia set is chosen in the minimap showed will be the Mandelbrot set with the Julia selected point, in case of Burning Ship set, minimap will show zoom area.
 
+![GitHub Logo](/imgs/mandelbrotset.png)
+![GitHub Logo](/imgs/juliaset.png)
+![GitHub Logo](/imgs/burningshipset.png)
+
 # References:
 1. [Efficiently generating the Mandelbrot and Julia sets - Luc de Jonckheere (BACHELOR THESIS - Leiden Institute of Advanced Computer Science (LIACS))](https://theses.liacs.nl/pdf/2018-2019-JonckheereLSde.pdf)
 1. [Color was given by Bernstein polynomial](https://en.wikipedia.org/wiki/Bernstein_polynomial)
