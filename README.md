@@ -14,6 +14,7 @@ To do something different I implemented a hud with the main fractal, an informat
 1. [Color was given by Bernstein polynomial](https://en.wikipedia.org/wiki/Bernstein_polynomial)
 1. [Window-to-viewport transformation, to convert a point in the world of window to the world of fractal.](https://www.geeksforgeeks.org/window-to-viewport-transformation-in-computer-graphics-with-implementation/)
 1. [Programa de Iniciação Científica 2011: Conceitos Básicos de Computação Gráfica](https://www.youtube.com/playlist?list=PLo4jXE-LdDTRGoEarRQXBIalJkjSP-aGA)
+1. [The best minilibx tutorial](https://harm-smits.github.io/42docs/libs/minilibx)
 
 # Interesting Links.
 1. [Some estrategies for Mandelbrot Implementation by javidx9 in Brute Force Processing video](https://www.youtube.com/watch?v=PBvLs88hvJ8)
